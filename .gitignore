@@ -1,0 +1,11 @@
+# Kicad
+*-save.pro
+*-rescue.lib
+*-rescue.dcm
+*.bak
+*.kicad_pcb-bak
+*.sch-bak
+*.gbr
+*.drl
+fp-info-cache
+export/
