@@ -1,3 +1,5 @@
+.vscode/
+
 # Kicad
 *-save.pro
 *-rescue.lib
@@ -8,4 +10,22 @@
 *.gbr
 *.drl
 fp-info-cache
+*-backups/
+*.kicad_prl
 export/
+
+# Latex
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.lol
+*.out
+*.synctex(busy)
+*.synctex.gz
+*.synctex.gz(busy)
+*.toc
+*.xdv
+svg-inkscape/
+
+*.afphoto
