@@ -1,18 +1,12 @@
 .vscode/
+.history/
 
 # Kicad
-*-save.pro
-*-rescue.lib
-*-rescue.dcm
-*.bak
-*.kicad_pcb-bak
-*.sch-bak
-*.gbr
-*.drl
-fp-info-cache
 *-backups/
 *.kicad_prl
+fp-info-cache
 export/
+.kiri/
 
 # Latex
 *.aux
