@@ -447,6 +447,12 @@ This is the second voltage reference that come with the full DIY kit. It uses a 
 reference to produce a very stable and accurate voltage reference. The LM4040 that comes with
 the kit is a 2.5V, C-Grade variant with 0.5\% output Tolerance (other variants are available).
 
+\textit{
+    Note: If you are using a LM4040 with a different reference Voltage, make sure to select
+    an appropriate bias resistor, according to
+    \hyperref[ssec:lm4040_selecting_bias_resistor]{Selecting the bias resistor}.
+}
+
 Start with the LM4040 reference, then solder the 100nF output capacitor and the 10k bias
 resistor.
 
@@ -819,6 +825,72 @@ adhesive.
 
 \subsection{\small (optional) \normalsize Gluing}
 \label{ssec:gluing}
+
+TODO
+
+\section*{Using Alternative Voltage References}
+
+\subsection*{L78Lxx}
+
+Any pin compatible, SOT-89 package Low-Dropout-Regulator can be used in place of the
+default L78L05, as long as \enspace $V_D < 12V - V_O$ \enspace ($V_D$ and $V_O$ being the
+regulators Dropout and Output-Voltage).
+
+\subsection*{LM4040}
+
+Any pin compatible, SOT-23-3 package LM4040 voltage reference can be used in place of the
+default one, but the bias resistor will have to be adjusted.
+
+\subsubsection*{Selecting the bias resistor}
+\label{ssec:lm4040_selecting_bias_resistor}
+
+The bias resistor connects between the LM4040s cathode and the supply voltage and sets the
+available output/load current $I_L$, as well as its bias current $I_Z$.
+
+The bias current is required to make the reference work and has to be within its operating
+current range, which is \enspace $\sim \!\! 100\mu A < I_Z < 15mA $ \enspace
+(depending on the exact reference used). We want to keep the bias current rather low to avoid
+the reference heating up too much, while staying within the range and keeping some distance to
+the extremes, so we target:
+
+\[ I_Z = 1mA \tag*{$(a)$}\label{tag:a} \]
+
+The load current is dependent on what is connected to the output of the reference. On the
+spark inducer all voltage references are being buffered by two OpAmps:
+
+\includegraphics[width=\textwidth, trim = 16.7cm 8.9cm 1.5cm 9.1cm, clip=true]{pdf/schematic.pdf}
+
+Thus, ignoring the input leakage currents of the OpAmps, the only load attached to the voltage
+reference is R10, which is connected to a virtual ground, so the load current is constant and
+equal to:
+
+\[ I_L = \frac{V_Z}{33k\Omega} \tag*{$(b)$}\label{tag:b} \]
+
+with $V_Z$ being the LM4040s Output-/Reference-Voltage.
+
+To calculate the value of the bias resistor, the LM4040s datasheet specifies the equation:
+
+\[ R_S = \frac{V_S - V_Z}{I_L + I_Z} \tag*{$(1)$} \]
+
+So for our application, with \ref{tag:a}, \ref{tag:b} and $V_S = 12V$ we get:
+
+\[ R_S = \frac{12V - V_Z}{\frac{V_Z}{33k \Omega} + 1mA} \tag*{$(2)$} \]
+
+You can use this equation to calculate the approximate value for the bias resistor of the
+spark inducers LM4040 voltage reference. Then select the closest E12 resistor value
+(or the closest resistor value you have on hand) and confirm that the operating current is
+\enspace $\sim 1mA$ \enspace with:
+
+\[
+    I_Z = \frac{V_S - V_Z}{R_{Selected}} - I_L \;\;\; \Rightarrow \;\;\;
+    I_Z = \frac{12V - V_Z}{R_{Selected}} - \frac{V_Z}{33k \Omega} \tag*{$(3)$}
+\]
+
+\subsection*{TL431BD}
+
+TODO
+
+\subsection*{REF50xx}
 
 TODO
 
