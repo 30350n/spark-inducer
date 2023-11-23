@@ -293,7 +293,7 @@ including power-hungry digital microcontrollers.)
     \small
     (If you plan on building circuits that require more current, you can replace the fuses with
     ones that support a higher hold current, \textbf{making sure your power supply can still
-    reach their rated trip current!})
+    supply their rated trip current!})
 \end{quoting}
 
 \subsection{Power Connector, LEDs}
@@ -387,7 +387,7 @@ as well as the 33.0k precision resistors.
     \includegraphics[width=46mm]{images/section_1-4_resistors.jpg}
 \end{figure}
 
-\subsection{\textbf{(default)} L78Lxx Voltage Reference}
+\subsection{L78Lxx Voltage Reference}
 
 \begin{center}
     \small
@@ -401,24 +401,22 @@ as well as the 33.0k precision resistors.
     \end{tabularx}
 \end{center}
 
-This is the default voltage reference that comes with the DIY kit. It uses a cheap 78xx
-regulator to produce a stable but not terribly accurate voltage reference. The particular
+This is the first of two voltage references that come with the full DIY kit. It uses a cheap
+78xx regulator to produce a stable but not terribly accurate voltage reference. The particular
 regulator that comes with the kit is a 5V one, but ones for other voltages are also available.
 
-As for all the other reference options, its output voltage gets buffered by one channel
-of the \hyperref[sec:reference_voltage_buffer]{Reference Voltage Buffer}, while the other one
-inverts it to get the negative reference. The buffering/inverting isn't necessary per se, but
-for this use case, the opamp offers some level of protection, so that you won't be able to
+The output voltage of the voltage reference gets buffered by one channel of the
+\hyperref[sec:reference_voltage_buffer]{Reference Voltage Buffer}, while the other one inverts
+it to get the negative reference voltage. The buffering/inverting isn't necessary per se, but
+for this use case, the OpAmp offers some level of protection, so that you won't be able to
 damage the references directly by connecting something in the wrong way. Using a low-offset
-opamp in combination with 0.1\% precision resistors, can also be more cost-effective opposed
-to adding a separate negative reference.
+OpAmp in combination with 0.1\% precision resistors, is also almost always more cost-effective
+than adding a separate negative reference.
 
 Start with the L78L05 regulator. Solder the outer pins first, then the center pin and the tab
 (these can take a while to solder because of their large thermal mass).
 
-Next, assemble the 330nF input and 100nF output capacitors.
-
-Finally, solder the 2×4 header and add the jumper to select the L78Lxx reference.
+Then, assemble the 330nF input and 100nF output capacitors.
 
 \begin{figure}[H]
     \centering
@@ -429,12 +427,34 @@ Finally, solder the 2×4 header and add the jumper to select the L78Lxx referenc
     \includegraphics[width=46mm]{images/section_1-5_header.jpg}
 \end{figure}
 
+\subsection{LM4040 Voltage Reference}
+
+\begin{center}
+    \small
+    \setlength\extrarowheight{8pt}
+    \begin{tabularx}{\textwidth}{|c|c|c|X|l|l|}
+        \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier\\
+        \hline\checkbox{la} & 15 & 1 & LM4040 Voltage Reference, SOT-23 & TODO & U5\\
+        \hline\checkbox{lb} &  7 & 1 & 10k Resistor, 0805 1\% & TODO & R9\\
+        \hline\checkbox{lc} & 16 & 1 & 100nF Capacitor, 0805 & - & C11\\
+        \hline\checkbox{ld} &  2 & 1 & 2×4 Header & - & J18\\
+        \hline\checkbox{le} &  3 & 1 & Jumper & - & -\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+This is the second voltage reference that come with the full DIY kit. It uses a LM4040 Zener
+reference to produce a very stable and accurate voltage reference. The LM4040 that comes with
+the kit is a 2.5V, C-Grade variant with 0.5\% output Tolerance (other variants are available).
+
+Start with the LM4040 reference, then solder the 100nF output capacitor and the 10k bias
+resistor.
+
+Finally, solder the 2×4 header and add the jumper to select either the L78Lxx or LM4040
+reference.
+
 If you're building a kit and don't have any of the parts for the other Voltage References,
 skip straight to \hyperref[sec:breadboard_headers]{assembling the Breadboard Headers}.
-
-\subsection{\footnotesize (optional) \normalsize LM4040 Voltage Reference}
-
-TODO
 
 \subsection{\footnotesize (optional) \normalsize TL431BD Voltage Reference}
 
