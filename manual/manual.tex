@@ -230,24 +230,26 @@ headers.
 
 \begin{center}
     \small
-    \setlength\extrarowheight{3pt}
+    \setlength\extrarowheight{4pt}
     \begin{tabularx}{\textwidth}{|c|c|X|l|l|}
         \hline \rowcolor{lightgray} ID & Qty & Description & Code on Part & PCB Identifier\\
-        \hline  1 & 1 & 2×8 power connector & - & J1\\
-        \hline  2 & 1 & 2×4 header & - & J18\\
-        \hline  3 & 1 & jumper & - & -\\
-        \hline  4 & 3 & red led, 1206 & - & D1, D2, D3\\
-        \hline  5 & 2 & resistor, 0805, 1.0\%, 3.3k & 3301 & R2, R3\\
-        \hline  6 & 3 & resistor, 0805, 1.0\%, 1.0k & 1001 & R1, R7, R8\\
-        \hline  7 & 2 & resistor, 0805, 0.1\%, 33.0k & 333 & R10, R11\\
-        \hline  8 & 2 & resettable fuse, 100mA & TODO & F2, F3\\
-        \hline  9 & 1 & resettable fuse, 200mA & TODO & F1\\
-        \hline 10 & 3 & capacitor, 1206, 10uF & - & C5, C6, C7\\
-        \hline 11 & 3 & diode, SOD-123, 1N5819 & TODO & D4, D5, D6\\
-        \hline 12 & 2 & opamp, SOIC8, TL072B & TODO & U1, U2\\
-        \hline 13 & 1 & voltage regulator, SOT-89, L78L05 & TODO & U4\\
-        \hline 14 & 5 & capacitor, 0805, 100nF & - & C1, C2, C3, C4, C10\\
-        \hline 15 & 1 & capacitor, 0805, 330nF & - & C9\\
+        \hline  1 & 1 & 2×8 IDC Connector & - & J1\\
+        \hline  2 & 1 & 2×4 Header & - & J18\\
+        \hline  3 & 1 & Jumper & - & -\\
+        \hline  4 & 3 & Red LED, 1206 & - & D1, D2, D3\\
+        \hline  5 & 3 & \makebox[2em]{\hfill 1k} Resistor, 0805 1\% & 1001 & R1, R7, R8\\
+        \hline  6 & 2 & \makebox[2em]{\hfill 3.3k} Resistor, 0805 1\%  & 3301 & R2, R3\\
+        \hline  7 & 1 & \makebox[2em]{\hfill 10k} Resistor, 0805 1\% & TODO & R9\\
+        \hline  8 & 2 & \makebox[2em]{\hfill 33k} Resistor, 0805 0.1\% & 333 & R10, R11\\
+        \hline  9 & 1 & \makebox[3.2em]{\hfill 200mA} Resettable Fuse, 1206 & TODO & F1\\
+        \hline 10 & 2 & \makebox[3.2em]{\hfill 100mA} Resettable Fuse, 1206 & TODO & F2, F3\\
+        \hline 11 & 3 & 10uF Capacitor, 1206 & - & C5, C6, C7\\
+        \hline 12 & 3 & 1N5819 Schottky Diode, SOD-123 & TODO & D4, D5, D6\\
+        \hline 13 & 2 & TL072H OpAmp, SOIC8 & TODO & U1, U2\\
+        \hline 14 & 1 & L78L05 Voltage Regulator, SOT-89 & TODO & U4\\
+        \hline 15 & 1 & LM4040 Voltage Reference, SOT-23 & TODO & U5\\
+        \hline 16 & 6 & \makebox[2.8em]{\hfill 100nF} Capacitor, 0805 & - & C1, C2, C3, C4, C10, C11\\
+        \hline 17 & 1 & \makebox[2.8em]{\hfill 330nF} Capacitor, 0805 & - & C9\\
         \hline
     \end{tabularx}
 \end{center}
@@ -261,10 +263,10 @@ headers.
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier\\
-        \hline\checkbox{aa} & 11 & 3 & diode, SOD-123, 1N5819 & TODO & D4, D5, D6\\
-        \hline\checkbox{ab} & 10 & 3 & capacitor, 1206, 10uF & - & C5, C6, C7\\
-        \hline\checkbox{ac} &  8 & 2 & resettable fuse, 100mA & TODO & F2, F3\\
-        \hline\checkbox{ad} &  9 & 1 & resettable fuse, 200mA & TODO & F1\\
+        \hline\checkbox{aa} & 12 & 3 & 1N5819 Schottky Diode, SOD-123 & TODO & D4, D5, D6\\
+        \hline\checkbox{ab} & 11 & 3 & 10uF Capacitor, 1206 & - & C5, C6, C7\\
+        \hline\checkbox{ac} & 10 & 2 & \makebox[3.2em]{\hfill 100mA} Resettable Fuse, 1206 & TODO & F2, F3\\
+        \hline\checkbox{ad} &  9 & 1 & \makebox[3.2em]{\hfill 200mA} Resettable Fuse, 1206 & TODO & F1\\
         \hline
     \end{tabularx}
 \end{center}
@@ -301,10 +303,10 @@ including power-hungry digital microcontrollers.)
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier\\
-        \hline\checkbox{ba} & 5 & 2 & resistor, 0805, 1.0\%, 3.3k & 3301 & R2, R3\\
-        \hline\checkbox{bb} & 6 & 1 & resistor, 0805, 1.0\%, 1.0k & 1001 & R1\\
-        \hline\checkbox{bc} & 1 & 1 & 2×8 power connector & - & J1\\
-        \hline\checkbox{bd} & 4 & 3 & red led, 1206 & - & D1, D2, D3\\
+        \hline\checkbox{ba} & 6 & 2 & \makebox[2em]{\hfill 3.3k} Resistor, 0805 1\%  & 3301 & R2, R3\\
+        \hline\checkbox{bb} & 5 & 1 & \makebox[2em]{\hfill 1k} Resistor, 0805 1\% & 1001 & R1\\
+        \hline\checkbox{bc} & 1 & 1 & 2×8 IDC Connector & - & J1\\
+        \hline\checkbox{bd} & 4 & 3 & Red LED, 1206 & - & D1, D2, D3\\
         \hline
     \end{tabularx}
 \end{center}
@@ -337,9 +339,9 @@ lenses can be damaged quite easily!}}
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier\\
-        \hline\checkbox{ca} & 12 & 1 & opamp, SOIC8, TL072B & TODO & U1\\
-        \hline\checkbox{cb} & 14 & 2 & capacitor, 0805, 100nF & - & C1, C2\\
-        \hline\checkbox{cc} &  6 & 2 & resistor, 0805, 1.0\%, 1.0k & 1001 & R7, R8\\
+        \hline\checkbox{ca} & 13 & 1 & TL072H OpAmp, SOIC8 & TODO & U1\\
+        \hline\checkbox{cb} & 16 & 2 & 100nF Capacitor, 0805 & - & C1, C2\\
+        \hline\checkbox{cc} &  5 & 2 & 1k Resistor, 0805 1\% & 1001 & R7, R8\\
         \hline
     \end{tabularx}
 \end{center}
@@ -366,9 +368,9 @@ Then, solder the 100nF decoupling capacitors and the 1k outputs resistors.
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier\\
-        \hline\checkbox{da} & 12 & 1 & opamp, SOIC8, TL072B & TODO & U2\\
-        \hline\checkbox{db} & 14 & 2 & capacitor, 0805, 100nF & - & C3, C4\\
-        \hline\checkbox{dc} &  7 & 2 & resistor, 0805, 0.1\%, 33.0k & 333 & R10, R11\\
+        \hline\checkbox{da} & 13 & 1 & TL072H OpAmp, SOIC8 & TODO & U2\\
+        \hline\checkbox{db} & 16 & 5 & 100nF Capacitor, 0805 & - & C3, C4\\
+        \hline\checkbox{dc} &  8 & 2 & 33k Resistor, 0805 0.1\% & 333 & R10, R11\\
         \hline
     \end{tabularx}
 \end{center}
@@ -392,11 +394,9 @@ as well as the 33.0k precision resistors.
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier\\
-        \hline\checkbox{ea} & 13 & 1 & voltage regulator, SOT-89, L78L05 & TODO & U4\\
-        \hline\checkbox{eb} & 14 & 1 & capacitor, 0805, 100nF & - & C10\\
-        \hline\checkbox{ec} & 15 & 1 & capacitor, 0805, 330nF & - & C9\\
-        \hline\checkbox{ed} &  2 & 1 & 2×4 header & - & J18\\
-        \hline\checkbox{ee} &  3 & 1 & jumper & - & -\\
+        \hline\checkbox{ea} & 14 & 1 & L78L05 Voltage Regulator, SOT-89 & TODO & U4\\
+        \hline\checkbox{eb} & 16 & 1 & \makebox[2.8em]{\hfill 100nF} Capacitor, 0805 & - & C10\\
+        \hline\checkbox{ec} & 17 & 1 & \makebox[2.8em]{\hfill 330nF} Capacitor, 0805 & - & C9\\
         \hline
     \end{tabularx}
 \end{center}
@@ -465,11 +465,11 @@ TODO
 
 \begin{center}
     \small
-    \setlength\extrarowheight{3pt}
+    \setlength\extrarowheight{4pt}
     \begin{tabularx}{\textwidth}{|c|c|X|l|}
         \hline \rowcolor{lightgray} ID & Qty & Description & PCB Identifier\\
-        \hline 16 & 8 & 2×4 header & J19, J20, J21, J22, J23, J24, J25, J26\\
-        \hline 17 & 8 & 1×6 right angle header & J10, J11, J12, J13, J14, J15, J16, J17\\
+        \hline 18 & 8 & 1×6 Right Angle Header & J10, J11, J12, J13, J14, J15, J16, J17\\
+        \hline 19 & 8 & 2×4 Header & J19, J20, J21, J22, J23, J24, J25, J26\\
         \hline
     \end{tabularx}
 \end{center}
@@ -483,7 +483,7 @@ TODO
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & PCB Identifier\\
-        \hline\checkbox{fa} & 16 & 8 & 2×4 header & J19, J20, J21, J22, J23, J24, J25, J26\\
+        \hline\checkbox{fa} & 19 & 8 & 2×4 Header & J19, J20, J21, J22, J23, J24, J25, J26\\
         \hline
     \end{tabularx}
 \end{center}
@@ -515,7 +515,7 @@ reach them, as shown. Be careful not to melt the plastic of the headers.
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & PCB Identifier\\
-        \hline\checkbox{ga} & 17 & 8 & 1×6 right angle header & J10, J11, J12, J13, J14, J15, J16, J17\\
+        \hline\checkbox{ga} & 18 & 8 & 1×6 Right Angle Header & J10, J11, J12, J13, J14, J15, J16, J17\\
         \hline
     \end{tabularx}
 \end{center}
@@ -584,20 +584,22 @@ Finally, solder all the remaining pins.
 
 \begin{center}
     \small
-    \setlength\extrarowheight{3pt}
+    \setlength\extrarowheight{4pt}
     \begin{tabularx}{\textwidth}{|c|c|X|l|}
         \hline \rowcolor{lightgray} ID & Qty & Description & PCB Identifier\\
-        \hline 18 & 8 & knurled nut & -\\
-        \hline 19 & 8 & WQP518MA-BM audio jack & J2, J3, J4, J5, J6. J7, J8, J9\\
-        \hline 20 & 8 & audio jack PCB & -\\
-        \hline 21 & 2 & M2 screw, nut & -\\
-        \hline 22 & 4 & potentiometer knob & -\\
-        \hline 23 & 1 & power switch PCB & -\\
-        \hline 24 & 4 & potentiometer nut & -\\
-        \hline 25 & 1 & power switch bracket & -\\
-        \hline 26 & 4 & potentiometer spacer & -\\
-        \hline 27 & 1 & power switch & SW1\\
-        \hline 28 & 4 & B100k potentiometer & RV1, RV2, RV3, RV4\\
+        \hline 20 & 8 & Knurled Nut & -\\
+        \hline 21 & 8 & WQP518MA-BM Audio Jack & J2, J3, J4, J5, J6. J7, J8, J9\\
+        \hline 22 & 8 & Audio Jack PCB & -\\
+        \hline 23 & 2 & M2 Screw, Nut & -\\
+        \hline 24 & 1 & Power Switch & SW1\\
+        \hline 25 & 1 & Power Switch Bracket & -\\
+        \hline 26 & 1 & Power Switch PCB & -\\
+        \hline 27 & 4 & Potentiometer Knob & -\\
+        \hline 28 & 4 & Potentiometer Nut & -\\
+        \hline 29 & 4 & Potentiometer Spacer & -\\
+        \hline 30 & 4 & 100k Potentiometer (linear) & RV1, RV2, RV3, RV4\\
+        \hline 31 & 4 & Potentiometer Dust Covers & -\\
+        \hline 32 & 1 & 0.8mm Tinned Copper Wire (75cm) & -\\
         \hline
     \end{tabularx}
 \end{center}
@@ -610,10 +612,10 @@ Finally, solder all the remaining pins.
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & PCB Identifier\\
-        \hline\checkbox{ha} & 21 & 2 & M2 screw, nut & -\\
-        \hline\checkbox{hb} & 23 & 1 & power switch PCB & -\\
-        \hline\checkbox{hc} & 25 & 1 & power switch bracket & -\\
-        \hline\checkbox{hd} & 27 & 1 & power switch & SW1\\
+        \hline\checkbox{ha} & 23 & 2 & M2 Screw, Nut & -\\
+        \hline\checkbox{hb} & 25 & 1 & Power Switch Bracket & -\\
+        \hline\checkbox{hc} & 24 & 1 & Power Switch & SW1\\
+        \hline\checkbox{hd} & 26 & 1 & Power Switch PCB & -\\
         \hline
     \end{tabularx}
 \end{center}
@@ -655,9 +657,9 @@ TODO
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & PCB Identifier\\
-        \hline\checkbox{ia} & 18 & 8 & knurled nut & -\\
-        \hline\checkbox{ib} & 19 & 8 & WQP518MA-BM audio jack & J2, J3, J4, J5, J6. J7, J8, J9\\
-        \hline\checkbox{ic} & 20 & 8 & audio jack PCB & -\\
+        \hline\checkbox{ia} & 20 & 8 & Knurled Nut & -\\
+        \hline\checkbox{ib} & 21 & 8 & WQP518MA-BM Audio Jack & J2, J3, J4, J5, J6. J7, J8, J9\\
+        \hline\checkbox{ic} & 22 & 8 & Audio Jack PCB & -\\
         \hline
     \end{tabularx}
 \end{center}
@@ -714,10 +716,11 @@ shouldn't be any continuity between any of the wires.
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & PCB Identifier\\
-        \hline\checkbox{ja} & 22 & 4 & potentiometer knob & -\\
-        \hline\checkbox{jb} & 24 & 4 & potentiometer nut & -\\
-        \hline\checkbox{jc} & 26 & 4 & potentiometer spacer & -\\
-        \hline\checkbox{jd} & 28 & 4 & B100k potentiometer & RV1, RV2, RV3, RV4\\
+        \hline\checkbox{ja} & 27 & 4 & Potentiometer Knob & -\\
+        \hline\checkbox{jb} & 28 & 4 & Potentiometer Nut & -\\
+        \hline\checkbox{jc} & 29 & 4 & Potentiometer Spacer & -\\
+        \hline\checkbox{jd} & 30 & 4 & 100k Potentiometer (linear) & RV1, RV2, RV3, RV4\\
+        \hline\checkbox{je} & 31 & 4 & Potentiometer Dust Covers & -\\  % TODO: add instructions
         \hline
     \end{tabularx}
 \end{center}
