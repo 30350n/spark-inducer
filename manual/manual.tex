@@ -119,7 +119,7 @@
 
 The \textit{spark} inducer is a development kit for prototyping audio circuits specially
 designed for creating eurorack modules. It can be used to test your ideas in an isolated
-environment (like you'd do when breadboarding normally) but with the added benefit of easily
+environment (like you would do when breadboarding normally) but with the added benefit of easily
 connecting to other eurorack compatible devices.
 
 It can also be mounted in a standard eurorack enclosure, so you can quickly test how your
@@ -319,7 +319,7 @@ Start by soldering the two 3.3k resistors and the 1k resistor.
 Next is the power connector. Align it carefully,
 \textbf{minding its orientation (there is an arrow on one side, which has to
 align with the white stripe on the PCB)} and solder it in place. Closely inspect your soldering
-and ensure you don't have any shorts, as this area will be hard to access later on.
+and ensure you do not have any shorts, as this area will be hard to access later on.
 
 Finally, solder the LEDs. These have to be soldered upside-down so that they can shine through
 the board. There is a T-shaped marking on their back that has to be aligned with the matching
@@ -410,11 +410,11 @@ regulator that comes with the kit is a 5V one, but ones for other voltages are a
 
 The output voltage of the voltage reference gets buffered by one channel of the
 \hyperref[sec:reference_voltage_buffer]{Reference Voltage Buffer}, while the other one inverts
-it to get the negative reference voltage. The buffering/inverting isn't necessary per se, but
-for this use case, the OpAmp offers some level of protection, so that you won't be able to
-damage the references directly by connecting something in the wrong way. Using a low-offset
-OpAmp in combination with 0.1\% precision resistors, is also almost always more cost-effective
-than adding a separate negative reference.
+it to get the negative reference voltage. The buffering/inverting is not necessary per se, but
+for this use case, the OpAmp offers some protection against damaging the references directly
+by connecting something in the wrong way. Using a low-offset OpAmp in combination with 0.1\%
+precision resistors, is also almost always more cost-effective than adding a separate negative
+reference.
 
 Start with the L78L05 regulator. Solder the outer pins first, then the center pin and the tab
 (these can take a while to solder because of their large thermal mass).
@@ -462,7 +462,7 @@ resistor.
 Finally, solder the 2×4 header and add the jumper to select either the L78Lxx or LM4040
 reference.
 
-If you're building a kit and don't have any of the parts for the other Voltage References,
+If you are building a kit and do not have any of the parts for the other Voltage References,
 skip straight to \hyperref[sec:breadboard_headers]{assembling the Breadboard Headers}.
 
 \subsection{\smaller (extra) \enspace \larger TL431BD Voltage Reference}
@@ -518,7 +518,7 @@ TODO
 \end{center}
 
 Take your time on soldering these, as they have to be aligned reasonably well, for the
-breadboard to fit later on. It doesn't have to be perfect, but there shouldn't be any obvious
+breadboard to fit later on. It does not have to be perfect, but there should not be any obvious
 rotations or offsets larger than \textasciitilde1mm.
 
 To make this easier, tin one pin first (ideally, one that is not a ground pin), then solder the
@@ -550,7 +550,7 @@ reach them, as shown. Be careful not to melt the plastic of the headers.
 \end{center}
 
 Take your side cutters and cut away about half (\textasciitilde3mm) of the shorter side of the
-headers, so that when pushed into the corner of the PCB, as seen below, they don't interfere
+headers, so that when pushed into the corner of the PCB, as seen below, they do not interfere
 with the power headers.
 
 \begin{figure}[H]
@@ -563,7 +563,7 @@ with the power headers.
 \end{figure}
 
 Then, for each header, tin one of the pads, reheat it and carefully push the header into the 
-corner of the PCB. Make sure they aren't crooked and sit flat on the PCB without any vertical
+corner of the PCB. Make sure they are not crooked and sit flat on the PCB without any vertical
 offset.
 
 As before, these have to be aligned reasonably well, although it is a little less critical,
@@ -670,10 +670,10 @@ pins.
 
 Snip off six \textbf{\textasciitilde12mm} pieces of the solid core wire and put each of them through
 one of the through-holes on the switch PCB. Fix them in place by soldering them to the pad
-on the main PCB first, then make sure they're straight and solder the pad on the switch PCB.
+on the main PCB first, then make sure they are straight and solder the pad on the switch PCB.
 
-Finally, use your multimeter in continuity mode to ensure you didn't create any short-circuits.
-With the switch being in the OFF position, there shouldn't be continuity between any of the
+Finally, use your multimeter in continuity mode to ensure you did not create any short-circuits.
+With the switch being in the OFF position, there should not be continuity between any of the
 wires.
 
 \subsection{Testing}
@@ -722,7 +722,7 @@ Add two audio jack PCBs to the audio jacks and solder all the pins.
 
 Next, snip off six \textbf{\textasciitilde15mm} pieces of the solid core wire and put each of them
 through one of the through-holes on the audio jack PCBs. Fix them in place by soldering them to
-the pad on the main PCB first, then make sure they're straight and solder the pad on the audio
+the pad on the main PCB first, then make sure they are straight and solder the pad on the audio
 jack PCB.
 
 \begin{figure}[H]
@@ -734,8 +734,8 @@ jack PCB.
     \includegraphics[width=46mm]{images/section_3-3_full.jpg}
 \end{figure}
 
-Use your multimeter in continuity mode to ensure you didn't create any short-circuits. There
-shouldn't be any continuity between any of the wires.
+Use your multimeter in continuity mode to ensure you did not create any short-circuits. There
+should not be any continuity between any of the wires.
 
 \textbf{Repeat these steps for the remaining three rows of audio jacks.}
 
@@ -765,11 +765,11 @@ Attach the 3D printed spacers to the potentiometers. There is a little nubbin on
 indexes into the PCB and helps to align the rotation of the potentiometer.
 
 Next, use the included 3D printed tool to screw down the potentiometers to the PCB with the
-hex nuts. Don't overtighten them, and make sure the potentiometer aligns with the pads on the
+hex nuts. Do not overtighten them, and make sure the potentiometer aligns with the pads on the
 back of the PCB nicely.
 
 Finally, bend down the solder lugs till they touch the PCB and solder them in place.
-(If you don't have potentiometers with solder lugs but shorter pins, you can stack up some
+(If you do not have potentiometers with solder lugs but shorter pins, you can stack up some
 solder to make them reach.)
 
 \begin{figure}[H]
