@@ -150,7 +150,7 @@ headers.
     \color{red}
     \subsubsection*{Warning:}
     \vspace{-3mm}
-    \textbf{
+    \textbf{%
         Even if you are an experienced builder, make sure to follow the build steps in the right
         order when building this kit. Some sections are very dense and will be almost impossible
         to assemble, if you do them in the wrong order.
@@ -235,19 +235,19 @@ headers.
     \small
     \setlength\extrarowheight{4pt}
     \begin{tabularx}{\textwidth}{|c|c|X|l|l|}
-        \hline \rowcolor{lightgray} ID & Qty & Description & Code on Part & PCB Identifier\\
+        \hline \rowcolor{lightgray} ID & Qty & Description & Code on Part & PCB Identifier / Ref\\
         \hline  1 & 1 & 2×8 IDC Connector & - & J1\\
         \hline  2 & 1 & 2×4 Header & - & J18\\
         \hline  3 & 1 & Jumper & - & -\\
         \hline  4 & 3 & Red LED, 1206 & - & D1, D2, D3\\
-        \hline  5 & 3 & \makebox[2em]{\hfill 1k} Resistor, 0805 1\% & 1001 & R1, R7, R8\\
+        \hline  5 & 3 & \makebox[2em]{\hfill 1k} Resistor, 0805 1\% 1/4W & 1001 & R1, R7, R8\\
         \hline  6 & 2 & \makebox[2em]{\hfill 3.3k} Resistor, 0805 1\%  & 3301 & R2, R3\\
         \hline  7 & 1 & \makebox[2em]{\hfill 10k} Resistor, 0805 1\% & TODO & R9\\
         \hline  8 & 2 & \makebox[2em]{\hfill 33k} Resistor, 0805 0.1\% & 333 & R10, R11\\
         \hline  9 & 1 & \makebox[3.2em]{\hfill 200mA} Resettable Fuse, 1206 & TODO & F1\\
         \hline 10 & 2 & \makebox[3.2em]{\hfill 100mA} Resettable Fuse, 1206 & TODO & F2, F3\\
         \hline 11 & 3 & 10uF Capacitor, 1206 & - & C5, C6, C7\\
-        \hline 12 & 3 & 1N5819 Schottky Diode, SOD-123 & TODO & D4, D5, D6\\
+        \hline 12 & 3 & 1N5819HW Schottky Diode, SOD-123 & TODO & D4, D5, D6\\
         \hline 13 & 2 & TL072H OpAmp, SOIC8 & TODO & U1, U2\\
         \hline 14 & 1 & L78L05 Voltage Regulator, SOT-89 & TODO & U4\\
         \hline 15 & 1 & LM4040 Voltage Reference, SOT-23 & TODO & U5\\
@@ -266,7 +266,7 @@ headers.
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier\\
-        \hline\checkbox{aa} & 12 & 3 & 1N5819 Schottky Diode, SOD-123 & TODO & D4, D5, D6\\
+        \hline\checkbox{aa} & 12 & 3 & 1N5819HW Schottky Diode, SOD-123 & TODO & D4, D5, D6\\
         \hline\checkbox{ab} & 11 & 3 & 10uF Capacitor, 1206 & - & C5, C6, C7\\
         \hline\checkbox{ac} & 10 & 2 & \makebox[3.2em]{\hfill 100mA} Resettable Fuse, 1206 & TODO & F2, F3\\
         \hline\checkbox{ad} &  9 & 1 & \makebox[3.2em]{\hfill 200mA} Resettable Fuse, 1206 & TODO & F1\\
@@ -274,7 +274,7 @@ headers.
     \end{tabularx}
 \end{center}
 
-Start by soldering the 1N5819 Schottky diodes and 10uF decoupling capacitors for each of the
+Start by soldering the 1N5819HW Schottky diodes and 10uF decoupling capacitors for each of the
 three power rails. \textbf{Mind the polarity of the diodes!}
 
 Then, do the same for the resettable PTC fuses. The two green ones are for the +12V and -12V
@@ -344,7 +344,7 @@ lenses can be damaged quite easily!}}
         \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier\\
         \hline\checkbox{ca} & 13 & 1 & TL072H OpAmp, SOIC8 & TODO & U1\\
         \hline\checkbox{cb} & 16 & 2 & 100nF Capacitor, 0805 & - & C1, C2\\
-        \hline\checkbox{cc} &  5 & 2 & 1k Resistor, 0805 1\% & 1001 & R7, R8\\
+        \hline\checkbox{cc} &  5 & 2 & 1k Resistor, 0805 1\% 1/4W & 1001 & R7, R8\\
         \hline
     \end{tabularx}
 \end{center}
@@ -465,7 +465,7 @@ reference.
 If you are building a kit and do not have any of the parts for the other Voltage References,
 skip straight to \hyperref[sec:breadboard_headers]{assembling the Breadboard Headers}.
 
-\subsection{\smaller (extra) \enspace \larger TL431BD Voltage Reference}
+\subsection{\smaller (extra) \enspace \larger TL431B Voltage Reference}
 
 TODO
 
@@ -496,7 +496,7 @@ TODO
     \small
     \setlength\extrarowheight{4pt}
     \begin{tabularx}{\textwidth}{|c|c|X|l|}
-        \hline \rowcolor{lightgray} ID & Qty & Description & PCB Identifier\\
+        \hline \rowcolor{lightgray} ID & Qty & Description & PCB Identifier / Ref\\
         \hline 18 & 8 & 1×6 Right Angle Header & J10, J11, J12, J13, J14, J15, J16, J17\\
         \hline 19 & 8 & 2×4 Header & J19, J20, J21, J22, J23, J24, J25, J26\\
         \hline
@@ -615,7 +615,7 @@ Finally, solder all the remaining pins.
     \small
     \setlength\extrarowheight{4pt}
     \begin{tabularx}{\textwidth}{|c|c|X|l|}
-        \hline \rowcolor{lightgray} ID & Qty & Description & PCB Identifier\\
+        \hline \rowcolor{lightgray} ID & Qty & Description & PCB Identifier / Ref\\
         \hline 20 & 8 & Knurled Nut & -\\
         \hline 21 & 8 & WQP518MA-BM Audio Jack & J2, J3, J4, J5, J6. J7, J8, J9\\
         \hline 22 & 8 & Audio Jack PCB & -\\
@@ -890,7 +890,7 @@ spark inducers LM4040 voltage reference. Then select the closest E12 resistor va
     I_Z = \frac{12V - V_Z}{R_{Selected}} - \frac{V_Z}{33k \Omega} \tag*{$(3)$}
 \]
 
-\subsection*{TL431BD}
+\subsection*{TL431B}
 
 TODO
 
