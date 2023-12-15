@@ -477,11 +477,69 @@ skip straight to \hyperref[sec:breadboard_headers]{assembling the Breadboard Hea
 
 \subsection{\smaller (extra) \enspace \larger TL431B Voltage Reference}
 
-TODO
+\begin{center}
+    \small
+    \setlength\extrarowheight{8pt}
+    \begin{tabularx}{\textwidth}{|c|c|X|l|l|}
+        \hline\rowcolor{lightgray} & Qty & Description & Code on Part & PCB Identifier\\
+        \hline\checkbox{ma} & 1 & \makebox[1.2em]{RS \hfill} Resistor, 0805 & - & R4\\
+        \hline\checkbox{mb} & 1 & \makebox[1.2em]{R1 \hfill} Resistor, 0805 & - & R5\\
+        \hline\checkbox{mc} & 1 & \makebox[1.2em]{R2 \hfill} Resistor, 0805 & - & R6\\
+        \hline\checkbox{md} & 1 & TL431B Programmable Reference, SOIC8 & TODO & U3\\
+        \hline\checkbox{me} & 1 & 10uF Capacitor, 1206 & - & C8\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+The TL431B is an accurate programmable voltage reference. It is relatively inexpensive and can
+be setup to produce any output voltage from \thinspace $2.5V - 36V$. It requires some extra
+components to work though, namely two (precision) resistors or a trimmer potentiometer to
+accurately set the desired output voltage, as well as a bias resistor to limit the supplied
+current and a large output capacitor.
+
+To find suitable values for these, take a look at the
+\hyperref[ssec:appendix_tl431b]{Using Alternative Voltage References Section}.
+
+Start by soldering the TL431B reference, then solder the output capacitor and the resistors.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=46mm]{images/placeholder.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/placeholder.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/placeholder.jpg}
+\end{figure}
 
 \subsection{\smaller (extra) \enspace \larger REF50xx Voltage Reference}
 
-TODO
+\begin{center}
+    \small
+    \setlength\extrarowheight{8pt}
+    \begin{tabularx}{\textwidth}{|c|c|X|l|l|}
+        \hline\rowcolor{lightgray} & Qty & Description & Code on Part & PCB Identifier\\
+        \hline\checkbox{na} & 1 & REF50xx Voltage Reference, SOIC8 & TODO & U6\\
+        \hline\checkbox{nb} & 2 & 1uF Capacitor, 0805 & - & C12, C13\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+The REF50xx is a fully contained, high precision Voltage Reference. It is the priciest of all
+the options, but only requires two additional input/output capacitors to function.
+
+Any of the available references from
+\href{https://www.ti.com/lit/gpn/REF5025}{Texas Instruments} will work.
+
+Solder the REF50xx reference IC first, then solder the input and output decoupling capacitors.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=46mm]{images/placeholder.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/placeholder.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/placeholder.jpg}
+\end{figure}
 
 \pagebreak
 \section{Breadboard Headers}
@@ -901,6 +959,7 @@ spark inducers LM4040 voltage reference. Then select the closest E12 resistor va
 \]
 
 \subsection*{TL431B}
+\label{ssec:appendix_tl431b}
 
 TODO
 
