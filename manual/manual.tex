@@ -586,12 +586,12 @@ Solder the REF50xx reference IC first, then solder the input and output decoupli
 \end{center}
 
 Take your time on soldering these, as they have to be aligned reasonably well, for the
-breadboard to fit later on. It does not have to be perfect, but there should not be any obvious
+breadboard to fit. It does not have to be perfect, but there should not be any obvious
 rotations or offsets larger than \textasciitilde1mm.
 
-To make this easier, tin one pin first (ideally, one that is not a ground pin), then solder the
-header to it and center it to your best ability. After that, you can carefully push/bend it a
-bit until the rotation looks good too, and solder the remaining pins.
+To make this easier, tin one pin first, then solder the header to it and center it to your best
+ability. After that, you can carefully push/bend it a bit until the rotation looks good too and
+solder the remaining pins.
 
 The pins of the headers in the center can be tricky to solder, but you should still be able to
 reach them, as shown. Be careful not to melt the plastic of the headers.
@@ -744,9 +744,11 @@ Finally, use your multimeter in continuity mode to ensure you did not create any
 With the switch being in the OFF position, there should not be continuity between any of the
 wires.
 
-\subsection{Testing}
-
-TODO
+\textit{%
+    Note: At this point it is also a good idea to perform a quick smoke test to confirm the
+    power input circuit is working. Connect the PCB to an eurorack power supply via the included
+    cable and confirm all three LEDs are lighting up.
+}
 
 \subsection{3.5mm Jacks}
 
@@ -823,22 +825,19 @@ should not be any continuity between any of the wires.
     \end{tabularx}
 \end{center}
 
-\subsubsection*{Tip:}
-\vspace{-3mm}
-\textbf{While not as critical as the audio jacks, this part is also easier to do if you follow the
-steps for each potentiometer, one by one, from top to bottom.}
-\vspace{5mm}
+\textit{%
+    Note: While not as critical as the audio jacks, this part is also easier to do if you follow
+    the steps for each potentiometer, one by one, from top to bottom.
+}
 
-Attach the 3D printed spacers to the potentiometers. There is a little nubbin on one side, which
-indexes into the PCB and helps to align the rotation of the potentiometer.
+Attach the plastic dust cover and 3D printed spacer to the potentiometer.
 
-Next, use the included 3D printed tool to screw down the potentiometers to the PCB with the
-hex nuts. Do not overtighten them, and make sure the potentiometer aligns with the pads on the
-back of the PCB nicely.
+Next, attach it to the PCB. There are three little nubbins on the 3D printed spacer, which index
+into the PCB and help to align the rotation of the potentiometer.
 
-Finally, bend down the solder lugs till they touch the PCB and solder them in place.
-(If you do not have potentiometers with solder lugs but shorter pins, you can stack up some
-solder to make them reach.)
+Use the included 3D printed tool to screw down the potentiometer to the PCB with the hex nut. Do
+not overtighten and make sure the potentiometer aligns with the pads on the back of the PCB
+nicely.
 
 \begin{figure}[H]
     \centering
@@ -847,6 +846,20 @@ solder to make them reach.)
     \includegraphics[width=46mm]{images/section_3-4_screwed.jpg}
     \hspace{2mm}
     \includegraphics[width=46mm]{images/section_3-4_solder_stack.jpg}
+\end{figure}
+
+Then, bend down the solder lugs until they touch the PCB and solder them in place.
+
+Finally, turn the potentiometer all the way to the left and attach the knob so that it aligns
+with the first line on the scale.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=46mm]{images/placeholder.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/placeholder.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/placeholder.jpg}
 \end{figure}
 
 \pagebreak
@@ -870,21 +883,25 @@ solder to make them reach.)
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|}
         \hline\rowcolor{lightgray} & ID & Qty & Description\\
-        \hline\checkbox{ka} & 29 & 4 & BB830 type breadboard\\
+        \hline\checkbox{ka} & 29 & 2 & BB830 type breadboard\\
         \hline\checkbox{kb} & 30 & 5 & rubber feet\\
         \hline
     \end{tabularx}
 \end{center}
 
-Take the two breadboards and combine them by pushing them together using the nubbins and slots
-on their sides.
+Take the two breadboards and attach the included metal backing plates to the adhesive on their
+backs. Then, combine them by pushing them together using the nubbins and slots on their sides.
 
-Next, turn them around and start attaching the rubber feet to the bottom. Ideally, they should
-be directly attached to the adhesive on the breadboards back. For this, use a
-ruler to measure out five 20×20mm squares (one in the center and one in each corner).
-Then use a utility knife to cut through the top cover of the adhesive and carefully peel it
-off. Finally, peel off the cover film from the rubber feet and stick them onto the exposed
-adhesive.
+Next, turn them around and attach the rubber feet to the bottom. Put one in each corner and one
+in the center, connecting both breadboards.
+
+Take the completed PCB and align the headers to the breadboards. Then, carefully press the two
+together to finish the assembly!
+
+\textit{%
+    Note: You do not have to push in all the headers at once. You can go from top to bottom or
+    start with the corners and work your way towards the center. Do not apply extensive force!
+}
 
 \begin{figure}[H]
     \centering
