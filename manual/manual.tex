@@ -552,8 +552,8 @@ Solder the REF50xx reference IC first, then solder the input and output decoupli
             \includegraphics[width=7cm]{images/headers_topdown.jpg}
         };
         \begin{scope}[x={(image.south east)},y={(image.north west)}]
-            \drawrect{0.03, 0.50}{0.97, 0.80} \drawtext{0.5, 0.75}{16}
-            \drawrect{0.03, 0.10}{0.97, 0.48} \drawtext{0.5, 0.43}{17}
+            \drawrect{0.03, 0.50}{0.97, 0.80} \drawtext{0.5, 0.75}{1}
+            \drawrect{0.03, 0.10}{0.97, 0.48} \drawtext{0.5, 0.43}{2}
         \end{scope}
     \end{tikzpicture}
     \hspace{2mm}
@@ -565,8 +565,8 @@ Solder the REF50xx reference IC first, then solder the input and output decoupli
     \setlength\extrarowheight{4pt}
     \begin{tabularx}{\textwidth}{|c|c|X|l|}
         \hline \rowcolor{lightgray} ID & Qty & Description & PCB Identifier / Ref\\
-        \hline 18 & 8 & 1×6 Right Angle Header & J10, J11, J12, J13, J14, J15, J16, J17\\
-        \hline 19 & 8 & 2×4 Header & J19, J20, J21, J22, J23, J24, J25, J26\\
+        \hline 1 & 8 & 1×6 Right Angle Header & J10, J11, J12, J13, J14, J15, J16, J17\\
+        \hline 2 & 8 & 2×4 Header & J19, J20, J21, J22, J23, J24, J25, J26\\
         \hline
     \end{tabularx}
 \end{center}
@@ -580,7 +580,7 @@ Solder the REF50xx reference IC first, then solder the input and output decoupli
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & PCB Identifier\\
-        \hline\checkbox{fa} & 19 & 8 & 2×4 Header & J19, J20, J21, J22, J23, J24, J25, J26\\
+        \hline\checkbox{fa} & 2 & 8 & 2×4 Header & J19, J20, J21, J22, J23, J24, J25, J26\\
         \hline
     \end{tabularx}
 \end{center}
@@ -612,7 +612,7 @@ reach them, as shown. Be careful not to melt the plastic of the headers.
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & PCB Identifier\\
-        \hline\checkbox{ga} & 18 & 8 & 1×6 Right Angle Header & J10, J11, J12, J13, J14, J15, J16, J17\\
+        \hline\checkbox{ga} & 1 & 8 & 1×6 Right Angle Header & J10, J11, J12, J13, J14, J15, J16, J17\\
         \hline
     \end{tabularx}
 \end{center}
@@ -658,21 +658,21 @@ Finally, solder all the remaining pins.
             \includegraphics[width=7cm]{images/front_panel_components_topdown.jpg}
         };
         \begin{scope}[x={(image.south east)},y={(image.north west)}]
-            \drawrect{0.13, 0.92}{0.91, 0.995} \drawtext{0.52, 0.96}{18}
-            \drawrect{0.13, 0.77}{0.91, 0.91} \drawtext{0.52, 0.84}{19}
-            \drawrect{0.13, 0.64}{0.91, 0.76} \drawtext{0.52, 0.70}{20}
+            \drawrect{0.13, 0.92}{0.91, 0.995} \drawtext{0.52, 0.96}{1}
+            \drawrect{0.13, 0.77}{0.91, 0.91} \drawtext{0.52, 0.84}{2}
+            \drawrect{0.13, 0.64}{0.91, 0.76} \drawtext{0.52, 0.70}{3}
 
-            \drawrect{0.13, 0.47}{0.26, 0.61} \drawtext{0.19, 0.54}{21}
-            \drawrect{0.28, 0.47}{0.88, 0.61} \drawtext{0.59, 0.54}{22}
+            \drawrect{0.13, 0.47}{0.26, 0.61} \drawtext{0.19, 0.54}{4}
+            \drawrect{0.28, 0.47}{0.88, 0.61} \drawtext{0.59, 0.54}{8}
 
-            \drawrect{0.12, 0.34}{0.28, 0.46} \drawtext{0.20, 0.40}{23}
-            \drawrect{0.29, 0.34}{0.88, 0.46} \drawtext{0.59, 0.40}{24}
+            \drawrect{0.12, 0.34}{0.28, 0.46} \drawtext{0.20, 0.40}{7}
+            \drawrect{0.29, 0.34}{0.88, 0.46} \drawtext{0.59, 0.40}{9}
 
-            \drawrect{0.12, 0.21}{0.27, 0.33} \drawtext{0.19, 0.27}{25}
-            \drawrect{0.29, 0.21}{0.88, 0.33} \drawtext{0.59, 0.27}{26}
+            \drawrect{0.12, 0.21}{0.27, 0.33} \drawtext{0.19, 0.27}{6}
+            \drawrect{0.29, 0.21}{0.88, 0.33} \drawtext{0.59, 0.27}{10}
 
-            \drawrect{0.11, 0.01}{0.27, 0.19} \drawtext{0.19, 0.15}{27}
-            \drawrect{0.28, 0.01}{0.88, 0.19} \drawtext{0.58, 0.15}{28}
+            \drawrect{0.11, 0.01}{0.27, 0.19} \drawtext{0.19, 0.15}{5}
+            \drawrect{0.28, 0.01}{0.88, 0.19} \drawtext{0.58, 0.15}{11}
         \end{scope}
     \end{tikzpicture}
     \hspace{2mm}
@@ -684,19 +684,19 @@ Finally, solder all the remaining pins.
     \setlength\extrarowheight{4pt}
     \begin{tabularx}{\textwidth}{|c|c|X|l|}
         \hline \rowcolor{lightgray} ID & Qty & Description & PCB Identifier / Ref\\
-        \hline 20 & 8 & Knurled Nut & -\\
-        \hline 21 & 8 & WQP518MA-BM Audio Jack & J2, J3, J4, J5, J6. J7, J8, J9\\
-        \hline 22 & 8 & Audio Jack PCB & -\\
-        \hline 23 & 2 & M2 Screw, Nut & -\\
-        \hline 24 & 1 & Power Switch & SW1\\
-        \hline 25 & 1 & Power Switch Bracket & -\\
-        \hline 26 & 1 & Power Switch PCB & -\\
-        \hline 27 & 4 & Potentiometer Knob & -\\
-        \hline 28 & 4 & Potentiometer Nut & -\\
-        \hline 29 & 4 & Potentiometer Spacer & -\\
-        \hline 30 & 4 & 100k Potentiometer (linear) & RV1, RV2, RV3, RV4\\
-        \hline 31 & 4 & Potentiometer Dust Covers & -\\
-        \hline 32 & 1 & 0.8mm Tinned Copper Wire (75cm) & -\\
+        \hline  1 & 8 & Knurled Nut & -\\
+        \hline  2 & 8 & WQP518MA-BM Audio Jack & J2, J3, J4, J5, J6. J7, J8, J9\\
+        \hline  3 & 8 & Audio Jack PCB & -\\
+        \hline  4 & 2 & M2 Screw, Nut & -\\
+        \hline  5 & 1 & Power Switch & SW1\\
+        \hline  6 & 1 & Power Switch Bracket & -\\
+        \hline  7 & 1 & Power Switch PCB & -\\
+        \hline  8 & 4 & Potentiometer Knob & -\\
+        \hline  9 & 4 & Potentiometer Nut & -\\
+        \hline 10 & 4 & Potentiometer Spacer & -\\
+        \hline 11 & 4 & 100k Potentiometer (linear) & RV1, RV2, RV3, RV4\\
+        \hline 12 & 4 & Potentiometer Dust Covers & -\\
+        \hline 13 & 1 & 0.8mm Tinned Copper Wire (75cm) & -\\
         \hline
     \end{tabularx}
 \end{center}
@@ -709,10 +709,10 @@ Finally, solder all the remaining pins.
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & PCB Identifier\\
-        \hline\checkbox{ha} & 23 & 2 & M2 Screw, Nut & -\\
-        \hline\checkbox{hb} & 25 & 1 & Power Switch Bracket & -\\
-        \hline\checkbox{hc} & 24 & 1 & Power Switch & SW1\\
-        \hline\checkbox{hd} & 26 & 1 & Power Switch PCB & -\\
+        \hline\checkbox{ha} & 4 & 2 & M2 Screw, Nut & -\\
+        \hline\checkbox{hb} & 6 & 1 & Power Switch Bracket & -\\
+        \hline\checkbox{hc} & 5 & 1 & Power Switch & SW1\\
+        \hline\checkbox{hd} & 7 & 1 & Power Switch PCB & -\\
         \hline
     \end{tabularx}
 \end{center}
@@ -766,9 +766,9 @@ wires.
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & PCB Identifier\\
-        \hline\checkbox{ia} & 20 & 8 & Knurled Nut & -\\
-        \hline\checkbox{ib} & 21 & 8 & WQP518MA-BM Audio Jack & J2, J3, J4, J5, J6. J7, J8, J9\\
-        \hline\checkbox{ic} & 22 & 8 & Audio Jack PCB & -\\
+        \hline\checkbox{ia} & 1 & 8 & Knurled Nut & -\\
+        \hline\checkbox{ib} & 2 & 8 & WQP518MA-BM Audio Jack & J2, J3, J4, J5, J6. J7, J8, J9\\
+        \hline\checkbox{ic} & 3 & 8 & Audio Jack PCB & -\\
         \hline
     \end{tabularx}
 \end{center}
@@ -825,11 +825,11 @@ should not be any continuity between any of the wires.
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & PCB Identifier\\
-        \hline\checkbox{ja} & 27 & 4 & Potentiometer Knob & -\\
-        \hline\checkbox{jb} & 28 & 4 & Potentiometer Nut & -\\
-        \hline\checkbox{jc} & 29 & 4 & Potentiometer Spacer & -\\
-        \hline\checkbox{jd} & 30 & 4 & 100k Potentiometer (linear) & RV1, RV2, RV3, RV4\\
-        \hline\checkbox{je} & 31 & 4 & Potentiometer Dust Covers & -\\  % TODO: add instructions
+        \hline\checkbox{ja} &  8 & 4 & Potentiometer Knob & -\\
+        \hline\checkbox{jb} &  9 & 4 & Potentiometer Nut & -\\
+        \hline\checkbox{jc} & 10 & 4 & Potentiometer Spacer & -\\
+        \hline\checkbox{jd} & 11 & 4 & 100k Potentiometer (linear) & RV1, RV2, RV3, RV4\\
+        \hline\checkbox{je} & 12 & 4 & Potentiometer Dust Covers & -\\  % TODO: add instructions
         \hline
     \end{tabularx}
 \end{center}
@@ -892,8 +892,8 @@ with the first line on the scale.
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|}
         \hline\rowcolor{lightgray} & ID & Qty & Description\\
-        \hline\checkbox{ka} & 29 & 2 & BB830 type breadboard\\
-        \hline\checkbox{kb} & 30 & 5 & rubber feet\\
+        \hline\checkbox{ka} & 1 & 2 & BB830 type breadboard\\
+        \hline\checkbox{kb} & 2 & 5 & rubber feet\\
         \hline
     \end{tabularx}
 \end{center}
