@@ -1,0 +1,1397 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage[hidelinks]{hyperref}
+\usepackage[table]{xcolor}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage[inkscapelatex=false]{svg}
+\usepackage{extsizes}
+\usepackage{fontspec}
+\usepackage{float}
+\usepackage{csvsimple}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage[none]{hyphenat}
+\usepackage{quoting}
+\usepackage{tikz}
+\usepackage{contour}
+\usepackage{tabularx}
+\usepackage{relsize}
+\usepackage{subcaption}
+
+\pdfstringdefDisableCommands{\def\enspace{\space}\def\smaller{}\def\larger{}}
+
+\setmainfont{Barlow}[
+    Path=./fonts/,
+    Extension = .ttf,
+    UprightFont = *-Medium,
+    BoldFont = *-SemiBold,
+    ItalicFont = *-MediumItalic,
+    BoldItalicFont = *-SemiBoldItalic,
+]
+
+\newfontfamily\ibmplex{IBMPlexMono}[
+    Path=./fonts/,
+    Extension = .ttf,
+    UprightFont = *-Medium,
+    BoldFont = *-SemiBold,
+    ItalicFont = *-MediumItalic,
+    BoldItalicFont = *-SemiBoldItalic,
+]
+
+\geometry{
+    a4paper,
+    left=30mm,
+    right=30mm,
+    top=30mm,
+    bottom=30mm,
+}
+
+\renewcommand{\subsectionautorefname}{see}
+
+\parindent=0pt
+\setlength{\parskip}{6pt}
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+\quotingsetup{vskip=4pt}
+
+\setlength{\headheight}{18pt}
+\pagestyle{fancy}
+\rhead{
+    \includesvg[height=4.3mm]{svg/protorack.svg}
+    \vspace{0.1mm}
+}
+\lhead{
+    \textit{spark} inducer
+    \hspace{1mm} - \hspace{1mm}
+    ASSEMBLY MANUAL \scriptsize (Rev.3)
+    \normalsize \vspace{0.75mm}
+}
+\lfoot{\ibmplex \scriptsize CERN-OHL-W-2.0+}
+\rfoot{\scriptsize \textit{designed by Max Schlecht}}
+
+\newcommand{\drawgrid}{
+    \draw[help lines, red, xstep=0.1, ystep=0.1] (0,0) grid (1,1);
+}
+
+\newcommand{\drawrect}[2]{
+    \draw[black, line width=1pt, rounded corners=3] (#1) rectangle (#2);
+}
+\newcommand{\drawtext}[2]{
+    \node[black] at (#1) {{#2}};
+}
+
+\newcommand{\checkbox}[1]{\CheckBox[backgroundcolor=0.86 0.828 0.71, name=#1]{}}
+
+\newcolumntype{L}{>{\raggedright}X}
+
+\begin{document}
+
+\thispagestyle{empty}
+\begin{center}
+    \begin{minipage}{0.9\linewidth}
+        \centering
+        \vspace{4cm}
+        {
+            \Large
+            \textit{spark} inducer \hspace{0.2em} - \hspace{0.2em} ASSEMBLY MANUAL
+            \hspace{0.1em} \normalsize (Rev.3)
+            \par
+        }
+        \vspace{1cm}
+        \includesvg[width=\linewidth]{svg/spark_inducer.svg}\par
+        \vspace{2cm}
+        {\Large Designed by Max Schlecht\par}
+        \vspace{0.5cm}
+        {\large Licensed under \ibmplex CERN-OHL-W-2.0+ \par}
+        \vspace{6cm}
+        {\includesvg[height=4.3mm]{svg/protorack.svg} \hfill \large 2023}
+    \end{minipage}
+\end{center}
+\clearpage
+
+\section*{Introduction}
+
+The \textit{spark} inducer is a development kit for prototyping audio circuits specially
+designed for creating eurorack modules. It can be used to test your ideas in an isolated
+environment (like you would do when breadboarding normally) but with the added benefit of easily
+connecting to other eurorack compatible devices.
+
+It can also be mounted in a standard eurorack enclosure, so you can quickly test how your
+creation will perform in an actual patch. Permanent rack installation is also possible, but
+additional precautions must be taken (\autoref{ssec:gluing}).
+
+\vspace{2mm}
+
+It features:
+\begin{itemize}[topsep=2pt]
+    \item 2x 830 point breadboards (BB830/MB-102 type)
+    \item 6x general purpose connections (inputs or outputs) and 2x buffered outputs
+    \item 4x arbitrary value potentiometers (the kit comes with $100k\Omega$ ones)
+    \item preconnected analog power rails, digital +5V power (from the +5V bus)
+    \item up to 4x selectable voltage references (positive and negative)
+    \item power switch, status LEDs and resettable fuses on all power rails 
+    \item being powered from a standard 16pin eurorack power connector
+\end{itemize}
+
+\vspace{3mm}
+
+This DIY kit is perfect for intermediate builders who already know how to do basic through-hole
+soldering but want to dip their feet into SMD soldering, as it mainly consists of relatively
+easy to solder 0805 and 1206-sized passive components, some SOIC packages and a bunch of 2.54mm
+headers.
+
+{
+    \color{red}
+    \subsubsection*{Warning:}
+    \vspace{-3mm}
+    \textbf{%
+        Even if you are an experienced builder, make sure to follow the build steps in the right
+        order when building this kit. Some sections are very dense and will be almost impossible
+        to assemble, if you do them in the wrong order.
+    }
+    \vspace{5mm}
+}
+
+If you need any help with the build or have any question/remarks about this guide, feel free to
+message us via the support page at:
+\href{https://protorack.de/support}{https://protorack.de/support}
+
+Happy soldering!
+
+\pagebreak
+
+\section*{Required Tools}
+
+\begin{itemize}
+    \item Tweezers
+    \item Side Cutters
+    \item 1.5mm hex key
+    \item Lead-Free Solder
+    \\ {\small We use Stannol Kristall 611 (Sn96.5Ag3Cu0.5, 0.7mm) at 380°C.}
+    \item Soldering Iron
+    \\ {\small Temperature control is nice, but not strictly required.}
+    \item Basic Multimeter
+    \\ {\small Anything cheap that can measure Voltage and Continuity will do.}
+    \item Eye Protection
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7cm]{images/tools_1.jpg}
+    \hspace{2mm}
+    \includegraphics[width=7cm]{images/tools_2.jpg}
+\end{figure}
+
+\subsection*{Nice to have}
+
+\begin{itemize}
+    \item Solder Wick
+    \\ {\small To get rid of superfluous solder.
+    Thinner one (\textasciitilde1.0mm \O) tends to work best.}
+    \item Magnification
+    \\ {\small A simple magnifying glass works nicely to inspect your soldering.}
+    \item Ruler/Calipers
+    \item Utility Knife
+\end{itemize}
+
+\pagebreak
+\renewcommand{\contentsname}{Build Steps}
+\tableofcontents
+
+\setcounter{section}{-1}
+
+\pagebreak
+\section{An Introduction into SMD Soldering \enspace - \enspace P-02 LFO}
+
+The spark inducer full kit comes with a few extra components, as well as two P-02 LFO breadboard
+helpers. These are meant as a quick (re)introduction/warm-up to do before soldering the main
+PCB. They are also really useful as a quickly set up modulation source for experimenting with
+your own circuits.
+
+If you are not building a full kit, you can \hyperref[sec:smd_components]{skip this step},
+although reading through the \hyperref[sec:basic_smd_soldering_techniques]{Basic SMD Soldering Technique}
+section is still recommended, especially if you are new to SMD soldering.
+
+\subsection{Handling SMD Components}
+
+The best tools to handle SMD components are a pair of tweezers and a steady hand. They are
+generally very light, so always handle them carefully and only apply the minimum force necessary
+with your tweezers. Too much force can easily send them flying across your room, which is not
+exactly dangerous, but good luck finding them again afterwards.
+
+Most SMD components come in either paper or plastic tapes like this:
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{images/01_01_paper_tape.jpg}
+        \caption*{Paper tape}
+    \end{subfigure}
+    \hspace{2mm}
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{images/01_02_plastic_tape.jpg}
+        \caption*{Plastic tape}
+    \end{subfigure}
+    \hspace{2mm}
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{images/01_03_smd_resistor_markings.jpg}
+        \caption*{Markings on a SMD resistor}
+        \label{fig:resistor_markings}
+    \end{subfigure}
+\end{figure}
+
+They can easily be mixed up, so only take them out of the tape right before using them. To do
+this, carefully remove the transparent cover tape (you can use your tweezers for this) and drop
+them onto a clean working surface.
+
+Most (but not all) SMD components also come with some markings on them,
+\hyperref[fig:resistor_markings]{see above}, which you can use to identify them if required
+(magnification makes this way easier). For resistors and capacitors (if your multimeter supports
+capacitance) you can also try to measure their value.
+
+\pagebreak
+\subsection{Basic SMD Soldering Technique}
+\label{sec:basic_smd_soldering_techniques}
+
+\textit{Note: This only one of many possible ways to hand-solder SMD components, but one that
+does not require any special tools and is reasonably easy to learn and implement.}
+
+\begin{enumerate}
+    \item \hyperref[fig:step1-3]{Apply some solder to one of the pads on the PCB.}
+    \item \hyperref[fig:step1-3]{Pick up the component using a pair of tweezers
+          (using your weak hand).}
+    \item \hyperref[fig:step1-3]{Reheat the solder on the PCB and place the component.}
+    \item \hyperref[fig:step4-6]{Retract your soldering iron while holding the component in
+          place, until the solder solidifies again.}
+    \item \hyperref[fig:step4-6]{Check the component placement and repeat 3 - 4, until you are
+          satisfied.}
+    \item \hyperref[fig:step4-6]{Solder all the remaining pads. Optionally reflow
+          (add some fresh solder) the first solder joint as well.}
+    \item Check your work for any visible short-circuits and reflow the affected pads.
+\end{enumerate}
+
+Make sure to heat all pads long enough so that the solder has time to flow into place. If this
+does not happen, try to increase your soldering temperature or add some fresh solder or flux.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{images/02_01_soldering_one_pad.jpg}
+        \caption*{Step 1.}
+    \end{subfigure}
+    \hspace{2mm}
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{images/02_02_component_tweezers.jpg}
+        \caption*{Step 2.}
+    \end{subfigure}
+    \hspace{2mm}
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{images/02_03_component_soldering.jpg}
+        \caption*{Step 3.}
+    \end{subfigure}
+\end{figure}
+\label{fig:step1-3}
+
+\vspace*{-6mm}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{images/02_04_component_soldered_tweezers.jpg}
+        \caption*{Step 4.}
+    \end{subfigure}
+    \hspace{2mm}
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{images/02_05_component_fully_soldered.jpg}
+        \caption*{Step 5.}
+    \end{subfigure}
+    \hspace{2mm}
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{images/02_06_allpads_soldered.jpg}
+        \caption*{Step 6.}
+    \end{subfigure}
+\end{figure}
+\label{fig:step4-6}
+
+\textit{Note: Some pads (especially ones connected to GND) might require more heat / longer
+heating times to solder properly. This is in most cases, because they are connected to a large
+copper plane on the PCB, which sucks away the heat from the connection.}
+
+\pagebreak
+\subsection{P-02 LFO}
+
+\textit{Note: If you have a full kit, you will only find the PCBs and headers in the P-02 LFO
+bag. The remaining SMD components are in the main SMD Components bag.}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \node[anchor=south west,inner sep=0] (image) at (0,0) {
+            \includegraphics[width=7cm]{images/03_01_components_topdown.jpg}
+        };
+        \begin{scope}[x={(image.south east)},y={(image.north west)}]
+            \drawtext{0.17, 0.79}{1}
+            \drawtext{0.80, 0.79}{2}
+
+            \drawtext{0.20, 0.51}{3}
+            \drawtext{0.20, 0.37}{4}
+            \drawtext{0.42, 0.61}{5}
+            \drawtext{0.56, 0.61}{6}
+            \drawtext{0.71, 0.61}{7}
+
+            \drawtext{0.26, 0.23}{8}
+            \drawtext{0.47, 0.25}{9}
+            \drawtext{0.63, 0.23}{10}
+            \drawtext{0.75, 0.23}{11}
+        \end{scope}
+    \end{tikzpicture}
+    \hspace{2mm}
+    \includegraphics[width=7cm]{images/03_02_components_sideview.jpg}
+\end{figure}
+
+\begin{center}
+    \small
+    \setlength\extrarowheight{4pt}
+    \begin{tabularx}{\textwidth}{|c|c|L|l|l|>{\smaller}l|}
+        \hline \rowcolor{lightgray} ID & Qty & Description & Code on Part & PCB Identifier & \larger Ref\\
+        \hline  1 & 4 & 2×2 Header & - & - & J1, J2, J3, J4\\
+        \hline  2 & 2 & 2×1 Header & - & - & J5, J6\\
+        \hline  3 & 1 & Red LED, 1206 & - & D3 & D3\\
+        \hline  4 & 2 & \makebox[2em]{\hfill 1k} Resistor, 0805 1\% 1/4W & 1001 & 1k & R8, R11\\
+        \hline  5 & 3 & \makebox[2em]{\hfill 10k} Resistor, 0805 1\% & 1002 & 10k & R5, R7, R10\\
+        \hline  6 & 3 & \makebox[2em]{\hfill 47k} Resistor, 0805 1\% & 4702 & 47k & R2, R3, R4\\
+        \hline  7 & 3 & \makebox[2em]{\hfill 100k} Resistor, 0805 1\% & 1003 & 100k & R1, R6, R9\\
+        \hline  8 & 2 & 1N5819HW Schottky Diode, SOD-123 & SL & 1N5819HW & D1, D2\\
+        \hline  9 & 1 & TL072H OpAmp, SOIC8 & TL072D & TL072H & U1\\
+        \hline 10 & 1 & BC848 NPN Transistor, SOT-23 & 1K & BC848 & Q1\\
+        \hline 11 & 1 & 100nF Capacitor, 0805 & - & 100nF & C1\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+\pagebreak
+
+\subsection*{P-02 LFO \thinspace - \thinspace SMD Components}
+
+\begin{center}
+    \small
+    \setlength\extrarowheight{8pt}
+    \begin{tabularx}{\textwidth}{|c|c|c|L|l|l|>{\smaller}l|}
+        \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier & \larger Ref\\
+        \hline\checkbox{za} &  5 & 3 & \makebox[1.5em]{\hfill 10k} Resistor, 0805 1\% & 1002 & 10k & R5, R7, R10\\
+        \hline\checkbox{zb} &  6 & 3 & \makebox[1.5em]{\hfill 47k} Resistor, 0805 1\% & 4702 & 47k & R2, R3, R4\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+Start by soldering the 10k and 47k resistors. Use the
+\hyperref[sec:basic_smd_soldering_techniques]{previously described technique} and add some
+solder to one pad, then reheat it and put the resistor in place with your tweezers and solder
+the second pad. Repeat this for all resistors.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7cm]{images/03_03_one_10k_soldered.jpg}
+    \hspace{2mm}
+    \includegraphics[width=7cm]{images/03_04_10ks_soldered.jpg}
+\end{figure}
+
+\textit{Note: You can streamline this by adding solder to one pad of each of the resistors
+first, then reheat and drop them into place one after the other and finally solder all the
+remaining pads. This way, you do not have to switch between solder and tweezers that often.}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7cm]{images/03_05_47ks_solder_pads.jpg}
+    \hspace{2mm}
+    \includegraphics[width=7cm]{images/03_06_47ks_soldered.jpg}
+\end{figure}
+
+\pagebreak
+
+\begin{center}
+    \small
+    \setlength\extrarowheight{8pt}
+    \begin{tabularx}{\textwidth}{|c|c|c|L|l|l|>{\smaller}l|}
+        \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier & \larger Ref\\
+        \hline\checkbox{ya} &  3 & 1 & Red LED, 1206 & - & D3 & D3\\
+        \hline\checkbox{yb} &  8 & 2 & 1N5819HW Schottky Diode & SL & 1N5819HW & D1, D2\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+Next up is the indicator LED. This needs to be soldered upside-down, so it can shine through the
+PCB substrate. Orient it as shown in the picture below, with the green T-shaped marking facing
+up and solder it in place. \textbf{Make sure the solder is properly bridging the gap between the
+LED and the pads on the PCB.}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7cm]{images/03_07_led_tweezers.jpg}
+    \hspace{2mm}
+    \includegraphics[width=7cm]{images/03_08_led_soldered.jpg}
+\end{figure}
+
+Then, also solder the two Schottky diodes. Orientation matters for these, so you will have to
+align the laser-etched marking line on them with the white silkscreen on the PCB as shown below.
+
+\textit{Note: Try looking at the diodes under a strong light source, with magnification.
+Changing the angle the light is coming from can also help you to spot it.}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7cm]{images/03_09_diode_closeup.jpg}
+    \hspace{2mm}
+    \includegraphics[width=7cm]{images/03_10_diodes_soldered.jpg}
+\end{figure}
+
+\pagebreak
+
+\begin{center}
+    \small
+    \setlength\extrarowheight{8pt}
+    \begin{tabularx}{\textwidth}{|c|c|c|L|l|l|>{\smaller}l|}
+        \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier & \larger Ref\\
+        \hline\checkbox{xb} &  9 & 1 & TL072H OpAmp, SOIC8 & TL072D & TL072H & U1\\
+        \hline\checkbox{xa} & 10 & 1 & BC848 NPN Transistor & 1K & BC848 & Q1\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+For the TL072H OpAmp orientation also matters. The white line on the Package has to be on
+the same side as the longer white line on the PCB.
+
+Solder one pin in place and then carefully check the alignment of all the other ones. Reheat the
+pin and reorient it if necessary. If it is rotated a little, you can also get away with very
+carefully bending it into place using your tweezers.
+
+Once the alignment looks good, solder the remaining pins, one by one and check that there are
+no short-circuits between them.
+
+Do the same for the BC848 transistor. Make sure it is centered well.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=46mm]{images/03_11_tl072_one_pin_soldered.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/03_12_tl072_soldered.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/03_13_bc848_soldered.jpg}
+\end{figure}
+
+\begin{center}
+    \small
+    \setlength\extrarowheight{8pt}
+    \begin{tabularx}{\textwidth}{|c|c|c|L|l|l|>{\smaller}l|}
+        \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier & \larger Ref\\
+        \hline\checkbox{wa} & 11 & 1 & 100nF Capacitor, 0805 & - & 100nF & C1\\
+        \hline\checkbox{wb} &  4 & 2 & \makebox[2em]{\hfill 1k} Resistor, 0805 1\% & 1001 & 1k & R8, R11\\
+        \hline\checkbox{wc} &  7 & 3 & \makebox[2em]{\hfill 100k} Resistor, 0805 1\% & 1003 & 100k & R1, R6, R9\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+Finish the SMD assembly by soldering the 100nF capacitors, as well as the remaining 1k and 100k
+resistors.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=46mm]{images/03_14_100nF_soldered.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/03_15_1ks_soldered.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/03_16_100ks_soldered.jpg}
+\end{figure}
+
+\subsection*{P-02 LFO \thinspace - \thinspace Headers}
+
+\begin{center}
+    \small
+    \setlength\extrarowheight{8pt}
+    \begin{tabularx}{\textwidth}{|c|c|c|X|>{\smaller}l|}
+        \hline\rowcolor{lightgray} & ID & Qty & Description & \larger Ref\\
+        \hline\checkbox{va} & 1 & 4 & 2×2 Header & J1, J2, J3, J4\\
+        \hline\checkbox{vb} & 2 & 2 & 2×1 Header & J5, J6\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+To solder the headers, it is best to use a breadboard to align everything (you can use one of
+the ones that come with the full kit). Insert all the headers into the breadboard as show
+below. Pay attention to not use too much force when inserting them into the breadboard, the
+metal pins can slide through the black plastic part.
+
+Then, put the PCB (with all SMD components assembled) on them, making sure \textbf{the component
+side is facing down}. Finally, solder all the headers in place.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=46mm]{images/03_17_headers_breadboard.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/03_18_headers_breadboard_pcb.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/03_19_headers_soldered.jpg}
+\end{figure}
+
+If you have successfully finished the first P-02 LFO board, you can go ahead and follow the next
+steps to solder the main PCB. After that is done you should be left with a few extra spare
+parts, which you can then use to build a second LFO board.
+
+\pagebreak
+\section{SMD Components}
+\label{sec:smd_components}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \node[anchor=south west,inner sep=0] (image) at (0,0) {
+            \includegraphics[width=7cm]{images/10_01_smd_components_topdown.jpg}
+        };
+        \begin{scope}[x={(image.south east)},y={(image.north west)}]
+            \drawtext{0.30, 0.90}{1}
+            \drawtext{0.61, 0.88}{2}
+            \drawtext{0.78, 0.88}{3}
+
+            \drawtext{0.17, 0.68}{4}
+            \drawtext{0.345, 0.68}{5}
+            \drawtext{0.52, 0.68}{6}
+            \drawtext{0.65, 0.68}{7}
+            \drawtext{0.78, 0.68}{8}
+
+            \drawtext{0.155, 0.49}{9}
+            \drawtext{0.29, 0.49}{10}
+            \drawtext{0.45, 0.49}{11}
+            \drawtext{0.66, 0.49}{12}
+            \drawtext{0.84, 0.49}{13}
+
+            \drawtext{0.21, 0.30}{14}
+            \drawtext{0.40, 0.30}{15}
+            \drawtext{0.53, 0.28}{16}
+            \drawtext{0.75, 0.28}{17}
+        \end{scope}
+    \end{tikzpicture}
+    \hspace{2mm}
+    \includegraphics[width=7cm]{images/10_02_smd_components_sideview.jpg}
+\end{figure}
+
+\begin{center}
+    \small
+    \setlength\extrarowheight{4pt}
+    \begin{tabularx}{\textwidth}{|c|c|X|l|l|}
+        \hline \rowcolor{lightgray} ID & Qty & Description & Code on Part & PCB Identifier / Ref\\
+        \hline  1 & 1 & 2×8 IDC Connector & - & J1\\
+        \hline  2 & 1 & 2×4 Header & - & J18\\
+        \hline  3 & 1 & Jumper & - & -\\
+        \hline  4 & 3 & Red LED, 1206 & - & D1, D2, D3\\
+        \hline  5 & 3 & \makebox[2em]{\hfill 1k} Resistor, 0805 1\% 1/4W & 1001 & R1, R7, R8\\
+        \hline  6 & 2 & \makebox[2em]{\hfill 3.3k} Resistor, 0805 1\%  & 3301 & R2, R3\\
+        \hline  7 & 1 & \makebox[2em]{\hfill 10k} Resistor, 0805 1\% & 1002 & R9\\
+        \hline  8 & 2 & \makebox[2em]{\hfill 33k} Resistor, 0805 0.1\% & 3302 & R10, R11\\
+        \hline  9 & 1 & \makebox[3.2em]{\hfill 200mA} Resettable Fuse, 1206 & bF & F1\\
+        \hline 10 & 2 & \makebox[3.2em]{\hfill 100mA} Resettable Fuse, 1206 & 0 & F2, F3\\
+        \hline 11 & 3 & 1N5819HW Schottky Diode, SOD-123 & SL & D4, D5, D6\\
+        \hline 12 & 3 & 10uF Capacitor, 1206 & - & C5, C6, C7\\
+        \hline 13 & 1 & \makebox[2.8em]{\hfill 330nF} Capacitor, 0805 & - & C9\\
+        \hline 14 & 2 & TL072H OpAmp, SOIC8 & TL072D & U1, U2\\
+        \hline 15 & 1 & L78L05 Voltage Regulator, SOT-89 & 8C & U4\\
+        \hline 16 & 1 & LM4040 Voltage Reference, SOT-23 & Y2C & U5\\
+        \hline 17 & 6 & \makebox[2.8em]{\hfill 100nF} Capacitor, 0805 & - & C1, C2, C3, C4, C10, C11\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+\pagebreak
+
+\subsection{Power Protection/Decoupling}
+
+\begin{center}
+    \small
+    \setlength\extrarowheight{8pt}
+    \begin{tabularx}{\textwidth}{|c|c|c|X|l|l|}
+        \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier\\
+        \hline\checkbox{aa} & 11 & 3 & 1N5819HW Schottky Diode, SOD-123 & SL & D4, D5, D6\\
+        \hline\checkbox{ab} & 12 & 3 & 10uF Capacitor, 1206 & - & C5, C6, C7\\
+        \hline\checkbox{ac} & 10 & 2 & \makebox[3.2em]{\hfill 100mA} Resettable Fuse, 1206 & 0 & F2, F3\\
+        \hline\checkbox{ad} &  9 & 1 & \makebox[3.2em]{\hfill 200mA} Resettable Fuse, 1206 & bF & F1\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+Start by soldering the 1N5819HW Schottky diodes and 10uF decoupling capacitors for each of the
+three power rails. \textbf{Mind the polarity of the diodes! The white line on them has to align
+with the line on the PCB.}
+
+Then, do the same for the resettable PTC fuses. The two black ones are for the +12V and -12V
+power rails and can hold a maximum current of 100mA indefinitely and will trip at
+\textasciitilde 250mA. The green one is for the +5V rail and has a hold current of 200mA and
+will trip at \textasciitilde 400mA. (This should be enough for most circuits, even ones
+including power-hungry digital microcontrollers.)
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=46mm]{images/11_01_diodes_soldered.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/11_02_caps_soldered.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/11_03_fuses_soldered.jpg}
+\end{figure}
+
+\begin{quoting}
+    \small
+    (If you plan on building circuits that require more current, you can replace the fuses with
+    ones that support a higher hold current, \textbf{making sure your power supply can still
+    supply their rated trip current!})
+\end{quoting}
+
+\pagebreak
+\subsection{Power Connector, LEDs}
+
+\begin{center}
+    \small
+    \setlength\extrarowheight{8pt}
+    \begin{tabularx}{\textwidth}{|c|c|c|X|l|l|}
+        \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier\\
+        \hline\checkbox{ba} & 6 & 2 & \makebox[2em]{\hfill 3.3k} Resistor, 0805 1\%  & 3301 & R2, R3\\
+        \hline\checkbox{bb} & 5 & 1 & \makebox[2em]{\hfill 1k} Resistor, 0805 1\% & 1001 & R1\\
+        \hline\checkbox{bc} & 1 & 1 & 2×8 IDC Connector & - & J1\\
+        \hline\checkbox{bd} & 4 & 3 & Red LED, 1206 & - & D1, D2, D3\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+Start by soldering the two 3.3k resistors and the 1k resistor.
+
+Next is the power connector. Align it carefully,
+\textbf{minding its orientation (there is an arrow on one side, which has to
+align with the white stripe on the PCB)} and solder it in place. Closely inspect your soldering
+and ensure you do not have any shorts, as this area will be hard to access later on.
+
+Finally, solder the LEDs. These have to be soldered upside-down so that they can shine through
+the board. There is a T-shaped marking on their back that has to be aligned with the matching
+symbol on the PCB. \textbf{{Be careful not to overheat the LEDs! The plastic
+lenses can be damaged quite easily!}}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=46mm]{images/12_01_resistors_soldered.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/12_02_connector_soldered.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/12_03_leds_soldered.jpg}
+\end{figure}
+
+\pagebreak
+\subsection{Buffered Outputs}
+
+\begin{center}
+    \small
+    \setlength\extrarowheight{8pt}
+    \begin{tabularx}{\textwidth}{|c|c|c|X|l|l|}
+        \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier\\
+        \hline\checkbox{ca} & 14 & 1 & TL072H OpAmp, SOIC8 & TL072D & U1\\
+        \hline\checkbox{cb} & 17 & 2 & 100nF Capacitor, 0805 & - & C1, C2\\
+        \hline\checkbox{cc} &  5 & 2 & 1k Resistor, 0805 1\% 1/4W & 1001 & R7, R8\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+First, solder the TL072H. Make sure to line up the little dot that marks Pin 1 with the marker
+on the PCB.
+
+Then, solder the 100nF decoupling capacitors and the 1k outputs resistors.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=46mm]{images/13_01_tl072_soldered.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/13_02_caps_soldered.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/13_03_resistors_soldered.jpg}
+\end{figure}
+
+\subsection{Reference Voltage Buffer}
+\label{sec:reference_voltage_buffer}
+
+\begin{center}
+    \small
+    \setlength\extrarowheight{8pt}
+    \begin{tabularx}{\textwidth}{|c|c|c|X|l|l|}
+        \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier\\
+        \hline\checkbox{da} & 13 & 1 & TL072H OpAmp, SOIC8 & TL072D & U2\\
+        \hline\checkbox{db} & 17 & 5 & 100nF Capacitor, 0805 & - & C3, C4\\
+        \hline\checkbox{dc} &  8 & 2 & 33k Resistor, 0805 0.1\% & 3302 & R10, R11\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+Once again, start by soldering the TL072H, then solder the 100nF decoupling capacitors,
+as well as the 33.0k precision resistors.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=46mm]{images/14_01_tl072_soldered.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/14_02_caps_soldered.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/14_03_resistors_soldered.jpg}
+\end{figure}
+
+\subsection{L78Lxx Voltage Reference}
+
+\begin{center}
+    \small
+    \setlength\extrarowheight{8pt}
+    \begin{tabularx}{\textwidth}{|c|c|c|X|l|l|}
+        \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier\\
+        \hline\checkbox{ea} & 15 & 1 & L78L05 Voltage Regulator, SOT-89 & 8C & U4\\
+        \hline\checkbox{eb} & 17 & 1 & \makebox[2.8em]{\hfill 100nF} Capacitor, 0805 & - & C10\\
+        \hline\checkbox{ec} & 13 & 1 & \makebox[2.8em]{\hfill 330nF} Capacitor, 0805 & - & C9\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+This is the first of two voltage references that come with the full DIY kit. It uses a cheap
+78xx regulator to produce a stable but not terribly accurate voltage reference. The particular
+regulator that comes with the kit is a 5V one, but ones for other voltages are also available.
+
+The output voltage of the voltage reference gets buffered by one channel of the
+\hyperref[sec:reference_voltage_buffer]{Reference Voltage Buffer}, while the other one inverts
+it to get the negative reference voltage. The buffering/inverting is not necessary per se, but
+for this use case, the OpAmp offers some protection against damaging the references directly
+by connecting something in the wrong way. Using a low-offset OpAmp in combination with 0.1\%
+precision resistors, is also almost always more cost-effective than adding a separate negative
+reference.
+
+Start with the L78L05 regulator. Solder the outer pins first, then the center pin and the tab
+(these can take a while to solder because of their large thermal mass).
+
+Then, assemble the 330nF input and 100nF output capacitors.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=46mm]{images/15_01_regulator_tab_soldered.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/15_02_regulator_fully_soldered.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/15_03_caps_soldered.jpg}
+\end{figure}
+
+\subsection{LM4040 Voltage Reference}
+
+\begin{center}
+    \small
+    \setlength\extrarowheight{8pt}
+    \begin{tabularx}{\textwidth}{|c|c|c|X|l|l|}
+        \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier\\
+        \hline\checkbox{la} & 16 & 1 & LM4040 Voltage Reference, SOT-23 & Y2C & U5\\
+        \hline\checkbox{lb} &  7 & 1 & 10k Resistor, 0805 1\% & 1002 & R9\\
+        \hline\checkbox{lc} & 17 & 1 & 100nF Capacitor, 0805 & - & C11\\
+        \hline\checkbox{ld} &  2 & 1 & 2×4 Header & - & J18\\
+        \hline\checkbox{le} &  3 & 1 & Jumper & - & -\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+This is the second voltage reference that come with the full DIY kit. It uses a LM4040 Zener
+reference to produce a very stable and accurate voltage reference. The LM4040 that comes with
+the kit is a 2.5V, C-Grade variant with 0.5\% output Tolerance (other variants are available).
+
+\textit{%
+    Note: If you are using a LM4040 with a different reference Voltage, make sure to select
+    an appropriate bias resistor, according to
+    \hyperref[ssec:appendix_lm4040_selecting_bias_resistor]{Selecting the bias resistor}.
+}
+
+Start with the LM4040 reference, then solder the 100nF output capacitor and the 10k bias
+resistor.
+
+Finally, solder the 2×4 header and add the jumper to select either the L78Lxx or LM4040
+reference.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=46mm]{images/16_01_lm4040_soldered.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/16_02_cap_and_bias_resistor_soldered.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/16_03_header_and_jumper.jpg}
+\end{figure}
+
+If you are building a kit and do not have any of the parts for the other Voltage References,
+skip straight to \hyperref[sec:breadboard_headers]{assembling the Breadboard Headers}.
+
+\pagebreak
+\subsection{\smaller (extra) \enspace \larger TL431B Voltage Reference}
+
+\begin{center}
+    \small
+    \setlength\extrarowheight{8pt}
+    \begin{tabularx}{\textwidth}{|c|c|X|l|l|}
+        \hline\rowcolor{lightgray} & Qty & Description & Code on Part & PCB Identifier\\
+        \hline\checkbox{ma} & 1 & \makebox[1.2em]{RS \hfill} Resistor, 0805 & - & R4\\
+        \hline\checkbox{mb} & 1 & \makebox[1.2em]{R1 \hfill} Resistor, 0805 & - & R5\\
+        \hline\checkbox{mc} & 1 & \makebox[1.2em]{R2 \hfill} Resistor, 0805 & - & R6\\
+        \hline\checkbox{md} & 1 & TL431B Programmable Reference, SOIC8 & TODO & U3\\
+        \hline\checkbox{me} & 1 & 10uF Capacitor, 1206 & - & C8\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+The TL431B is an accurate programmable voltage reference. It is relatively inexpensive and can
+be setup to produce any output voltage from \thinspace $2.5V - 36V$. It requires some extra
+components to work though, namely two (precision) resistors or a trimmer potentiometer to
+accurately set the desired output voltage, as well as a bias resistor to limit the supplied
+current and a large output capacitor.
+
+To find suitable values for these, take a look at the
+\hyperref[ssec:appendix_tl431b]{Using Alternative Voltage References Section}.
+
+Start by soldering the TL431B reference, then solder the output capacitor and the resistors.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=46mm]{images/placeholder.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/placeholder.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/placeholder.jpg}
+\end{figure}
+
+\pagebreak
+\subsection{\smaller (extra) \enspace \larger REF50xx Voltage Reference}
+
+\begin{center}
+    \small
+    \setlength\extrarowheight{8pt}
+    \begin{tabularx}{\textwidth}{|c|c|X|l|l|}
+        \hline\rowcolor{lightgray} & Qty & Description & Code on Part & PCB Identifier\\
+        \hline\checkbox{na} & 1 & REF50xx Voltage Reference, SOIC8 & TODO & U6\\
+        \hline\checkbox{nb} & 2 & 1uF Capacitor, 0805 & - & C12, C13\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+The REF50xx is a fully contained, high precision Voltage Reference. It is the priciest of all
+the options, but only requires two additional input/output capacitors to function.
+
+Any of the available references from
+\href{https://www.ti.com/lit/gpn/REF5025}{Texas Instruments} will work.
+
+Solder the REF50xx reference IC first, then solder the input and output decoupling capacitors.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=46mm]{images/placeholder.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/placeholder.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/placeholder.jpg}
+\end{figure}
+
+\pagebreak
+\section{Breadboard Headers}
+\label{sec:breadboard_headers}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \node[anchor=south west,inner sep=0] (image) at (0,0) {
+            \includegraphics[width=7cm]{images/20_01_breadboard_headers_topdown.jpg}
+        };
+        \begin{scope}[x={(image.south east)},y={(image.north west)}]
+            \drawtext{0.50, 0.68}{1}
+            \drawtext{0.51, 0.335}{2}
+        \end{scope}
+    \end{tikzpicture}
+    \hspace{2mm}
+    \includegraphics[width=7cm]{images/20_02_breadboard_headers_sideview.jpg}
+\end{figure}
+
+\begin{center}
+    \small
+    \setlength\extrarowheight{4pt}
+    \begin{tabularx}{\textwidth}{|c|c|X|l|}
+        \hline \rowcolor{lightgray} ID & Qty & Description & PCB Identifier / Ref\\
+        \hline 1 & 8 & 2×4 Header & J19, J20, J21, J22, J23, J24, J25, J26\\
+        \hline 2 & 8 & 1×6 Right Angle Header & J10, J11, J12, J13, J14, J15, J16, J17\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+\pagebreak
+
+\subsection{Power Headers}
+
+\begin{center}
+    \small
+    \setlength\extrarowheight{8pt}
+    \begin{tabularx}{\textwidth}{|c|c|c|X|l|}
+        \hline\rowcolor{lightgray} & ID & Qty & Description & PCB Identifier\\
+        \hline\checkbox{fa} & 1 & 8 & 2×4 Header & J19, J20, J21, J22, J23, J24, J25, J26\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+Take your time on soldering these, as they have to be aligned reasonably well, for the
+breadboard to fit. It does not have to be perfect, but there should not be any obvious
+rotations or offsets larger than \textasciitilde1mm.
+
+To make this easier, tin one pin first, then solder the header to it and center it to your best
+ability. After that, you can carefully push/bend it a bit until the rotation looks good too and
+solder the remaining pins.
+
+The pins of the headers in the center can be tricky to solder, but you should still be able to
+reach them, as shown. Be careful not to melt the plastic of the headers.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=46mm]{images/21_01_header_top_down.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/21_02_header_sideview.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/21_03_header_soldering.jpg}
+\end{figure}
+
+\pagebreak
+\subsection{Right Angle Headers}
+
+\begin{center}
+    \small
+    \setlength\extrarowheight{8pt}
+    \begin{tabularx}{\textwidth}{|c|c|c|X|l|}
+        \hline\rowcolor{lightgray} & ID & Qty & Description & PCB Identifier\\
+        \hline\checkbox{ga} & 2 & 8 & 1×6 Right Angle Header & J10, J11, J12, J13, J14, J15, J16, J17\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+Take your side cutters and cut away about half (\textasciitilde3mm) of the shorter side of the
+headers, so that when pushed into the corner of the PCB, as seen below, they do not interfere
+with the power headers.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=46mm]{images/22_01_header_pcb_uncut.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/22_02_header_cutting.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/22_03_header_pcb_cut.jpg}
+\end{figure}
+
+Then, for each header, tin one of the pads, reheat it and carefully push the header into the 
+corner of the PCB. Make sure they are not crooked and sit flat on the PCB without any vertical
+offset.
+
+As before, these have to be aligned reasonably well, although it is a little less critical,
+because alignment is generally easier, and they can also be bent into place later on.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7cm]{images/22_04_one_pin_soldered.jpg}
+    \hspace{2mm}
+    \includegraphics[width=7cm]{images/22_05_soldered_sideview.jpg}
+\end{figure}
+
+Finally, solder all the remaining pins.
+
+\pagebreak
+\section{Front Panel Components}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \node[anchor=south west,inner sep=0] (image) at (0,0) {
+            \includegraphics[width=7cm]{images/30_01_frontpanel_components_topdown.jpg}
+        };
+        \begin{scope}[x={(image.south east)},y={(image.north west)}]
+            \drawtext{0.11, 0.89}{1}
+            \drawtext{0.11, 0.79}{2}
+            \drawtext{0.11, 0.69}{3}
+
+            \drawtext{0.12, 0.58}{4}
+            \drawtext{0.405, 0.58}{5}
+            \drawtext{0.10, 0.47}{6}
+            \drawtext{0.415, 0.47}{7}
+
+            \drawtext{0.92, 0.58}{8}
+            \drawtext{0.92, 0.48}{9}
+            \drawtext{0.92, 0.385}{10}
+            \drawtext{0.92, 0.27}{11}
+            \drawtext{0.92, 0.14}{12}
+
+            \drawtext{0.25, 0.24}{13}
+        \end{scope}
+    \end{tikzpicture}
+    \hspace{2mm}
+    \includegraphics[width=7cm]{images/30_02_frontpanel_components_sideview.jpg}
+\end{figure}
+
+\begin{center}
+    \small
+    \setlength\extrarowheight{4pt}
+    \begin{tabularx}{\textwidth}{|c|c|X|l|}
+        \hline \rowcolor{lightgray} ID & Qty & Description & PCB Identifier / Ref\\
+        \hline  1 & 8 & Knurled Nut & -\\
+        \hline  2 & 8 & WQP518MA-BM Audio Jack & J2, J3, J4, J5, J6. J7, J8, J9\\
+        \hline  3 & 8 & Audio Jack PCB & -\\
+        \hline  4 & 2 & M2 Screw, Nut & -\\
+        \hline  5 & 1 & Power Switch & SW1\\
+        \hline  6 & 1 & Power Switch Bracket & -\\
+        \hline  7 & 1 & Power Switch PCB & -\\
+        \hline  8 & 4 & Potentiometer Knob & -\\
+        \hline  9 & 4 & Potentiometer Nut & -\\
+        \hline 10 & 4 & Potentiometer Spacer & -\\
+        \hline 11 & 4 & 100k Potentiometer (linear) & RV1, RV2, RV3, RV4\\
+        \hline 12 & 4 & Potentiometer Dust Covers & -\\
+        \hline 13 & 1 & 0.8mm Tinned Copper Wire (75cm) & -\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+\pagebreak
+\subsection{Power Switch}
+
+\begin{center}
+    \small
+    \setlength\extrarowheight{8pt}
+    \begin{tabularx}{\textwidth}{|c|c|c|X|l|}
+        \hline\rowcolor{lightgray} & ID & Qty & Description & PCB Identifier\\
+        \hline\checkbox{ha} & 4 & 2 & M2 Screw, Nut & -\\
+        \hline\checkbox{hb} & 6 & 1 & Power Switch Bracket & -\\
+        \hline\checkbox{hc} & 5 & 1 & Power Switch & SW1\\
+        \hline\checkbox{hd} & 7 & 1 & Power Switch PCB & -\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+Insert the two M2 nuts into the 3D printed plastic bracket and slip it onto the switch (with
+the M2 nuts facing away from the switch).
+
+Next, hold the switch against the main PCB and screw it in place using the two M2 screws and a
+1.5mm hex key. \textbf{Be careful to put it on the right way. The two rows of pins on the back
+of the switch that are closer to each other should be facing towards the power connector.}
+
+Add the Power Switch PCB to the switch (blank side up), push it down and solder down all the
+pins.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=46mm]{images/31_01_switch_bracket_nuts.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/31_02_switch_assembled.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/31_03_switch_pcb_soldered.jpg}
+\end{figure}
+
+Snip off six \textbf{\textasciitilde12mm} pieces of the solid core wire and put each of them through
+one of the through-holes on the switch PCB. Fix them in place by soldering them to the pad
+on the main PCB first, then make sure they are straight and solder the pad on the switch PCB.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=46mm]{images/31_04_switch_soldered.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/31_05_switch_testing.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/31_06_leds_on.jpg}
+\end{figure}
+
+Finally, use your multimeter in continuity mode to ensure you did not create any short-circuits.
+With the switch being in the OFF position, there should not be continuity between any of the
+wires.
+
+\textit{%
+    Note: At this point it is also a good idea to perform a quick smoke test to confirm the
+    power input circuit is working. Connect the PCB to an eurorack power supply via the included
+    cable and confirm all three LEDs are lighting up.
+}
+
+\subsection{3.5mm Jacks}
+
+\begin{center}
+    \small
+    \setlength\extrarowheight{8pt}
+    \begin{tabularx}{\textwidth}{|c|c|c|X|l|}
+        \hline\rowcolor{lightgray} & ID & Qty & Description & PCB Identifier\\
+        \hline\checkbox{ia} & 1 & 8 & Knurled Nut & -\\
+        \hline\checkbox{ib} & 2 & 8 & WQP518MA-BM Audio Jack & J2, J3, J4, J5, J6. J7, J8, J9\\
+        \hline\checkbox{ic} & 3 & 8 & Audio Jack PCB & -\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+\vspace{-5mm}
+{
+    \color{red}
+    \subsubsection*{Important:}
+    \vspace{-3mm}
+    Do each of the following steps for each pair/row of audio jacks, \textbf{one pair/row at a
+    time, from top to bottom}. Once a row is assembled, it will be \textbf{nearly impossible
+    to reach the one above it}. Make sure your soldering is solid, and there are no shorts.
+    \vspace{5mm}
+}
+
+Take two audio jacks and knurled nuts and attach them to the top two holes of the main PCB.
+Align them so that they fit into the box marked on the back side of the main PCB.
+
+Add two audio jack PCBs (with the side that says JACK facing up) to the audio jacks and solder
+all the pins.
+
+\textit{%
+    Note: The audio jack PCBs come together on one panel PCB. Break them apart at the V-Scores.
+    To remove the tabs between them, a pair of pliers can be helpful.
+}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=46mm]{images/32_01_jacks_mounted.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/32_02_jacks_pcbs_soldered.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/32_03_jacks_wire_soldered_bottom.jpg}
+\end{figure}
+
+Next, snip off six \textbf{\textasciitilde15mm} pieces of the solid core wire and put each of them
+through one of the through-holes on the audio jack PCBs. Fix them in place by soldering them to
+the pad on the main PCB first, then make sure they are straight and solder the pad on the audio
+jack PCB.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7cm]{images/32_04_jacks_wire_soldered_top.jpg}
+    \hspace{2mm}
+    \includegraphics[width=7cm]{images/32_05_all_jacks_soldered.jpg}
+\end{figure}
+
+Use your multimeter in continuity mode to ensure you did not create any short-circuits. There
+should not be any continuity between any of the wires.
+
+\textbf{Repeat these steps for the remaining three rows of audio jacks.}
+
+\pagebreak
+\subsection{Potentiometers}
+
+\begin{center}
+    \small
+    \setlength\extrarowheight{8pt}
+    \begin{tabularx}{\textwidth}{|c|c|c|X|l|}
+        \hline\rowcolor{lightgray} & ID & Qty & Description & PCB Identifier\\
+        \hline\checkbox{ja} &  8 & 4 & Potentiometer Knob & -\\
+        \hline\checkbox{jb} &  9 & 4 & Potentiometer Nut & -\\
+        \hline\checkbox{jc} & 10 & 4 & Potentiometer Spacer & -\\
+        \hline\checkbox{jd} & 11 & 4 & 100k Potentiometer (linear) & RV1, RV2, RV3, RV4\\
+        \hline\checkbox{je} & 12 & 4 & Potentiometer Dust Covers & -\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+\textit{%
+    Note: While not as critical as the audio jacks, this part is also easier to do if you follow
+    the steps for each potentiometer, one by one, from top to bottom.
+}
+
+Attach the plastic dust cover and 3D printed spacer to the potentiometer.
+
+Next, attach it to the PCB. There are three little nubbins on the 3D printed spacer, which index
+into the PCB and help to align the rotation of the potentiometer.
+
+Use the included 3D printed tool to screw down the potentiometer to the PCB with the hex nut. Do
+not overtighten and make sure the potentiometer aligns with the pads on the back of the PCB
+nicely.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=46mm]{images/33_01_pot_dust_cover_spacer.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/33_02_pot_attached_pcb.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/33_03_pot_screwing_nut.jpg}
+\end{figure}
+
+Then, bend down the solder lugs until they touch the PCB and solder them in place.
+
+Finally, turn the potentiometer all the way to the left and attach the knob so that it aligns
+with the first line on the scale.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=46mm]{images/33_04_pot_lugs_bent.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/33_05_pot_soldered.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/33_06_knob_attached.jpg}
+\end{figure}
+
+\pagebreak
+\section{Breadboard}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \node[anchor=south west,inner sep=0] (image) at (0,0) {
+            \includegraphics[width=7cm]{images/40_01_breadboards_topdown.jpg}
+        };
+        \begin{scope}[x={(image.south east)},y={(image.north west)}]
+            \drawtext{0.415, 0.81}{1}
+            \drawtext{0.907, 0.79}{2}
+        \end{scope}
+    \end{tikzpicture}
+    \hspace{2mm}
+    \includegraphics[width=7cm]{images/40_02_breadboards_sideview.jpg}
+\end{figure}
+
+\begin{center}
+    \small
+    \setlength\extrarowheight{8pt}
+    \begin{tabularx}{\textwidth}{|c|c|c|X|}
+        \hline\rowcolor{lightgray} & ID & Qty & Description\\
+        \hline\checkbox{ka} & 1 & 2 & BB830 type breadboard\\
+        \hline\checkbox{kb} & 2 & 5 & rubber feet\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+Take the two breadboards and attach the included metal backing plates to the adhesive on their
+backs. Then, combine them by pushing them together using the nubbins and slots on their sides.
+
+Next, turn them around and attach the rubber feet to the bottom. Put one in each corner and one
+in the center, connecting both breadboards.
+
+Take the completed PCB and align the headers to the breadboards. Then, carefully press the two
+together to finish the assembly!
+
+\textit{%
+    Note: Do not push in all the headers at once. Do all the corners one by one and then finish
+    with the center.
+}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=46mm]{images/40_03_metal_plate.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/40_04_rubberfeet.jpg}
+    \hspace{2mm}
+    \includegraphics[width=46mm]{images/40_05_fully_assembled.jpg}
+\end{figure}
+
+Congratulations! You are done with the main build. Next, checkout the
+\href{https://protorack.de/modules/spark-inducer/manual}{user manual}!
+
+\pagebreak
+\subsection{\smaller (optional) \enspace \larger Gluing}
+\label{ssec:gluing}
+
+If you want to permanently put the spark inducer into a eurorack case, it is highly recommended
+that you glue the breadboards to the main PCB. To do this, simply add a couple of blobs of
+hot-glue to the marked glue spots, as shown below.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7cm]{images/placeholder.jpg}
+    \hspace{2mm}
+    \includegraphics[width=7cm]{images/placeholder.jpg}
+\end{figure}
+
+\pagebreak
+\section*{Using Alternative Voltage References}
+
+\subsection*{L78Lxx}
+
+Any pin compatible, SOT-89 package Low-Dropout-Regulator can be used in place of the
+default L78L05, as long as \enspace $V_D < 12V - V_O$ \enspace ($V_D$ and $V_O$ being the
+regulators Dropout and Output-Voltage).
+
+\subsection*{LM4040}
+
+Any pin compatible, SOT-23-3 package LM4040 voltage reference can be used in place of the
+default one, but the bias resistor will have to be adjusted.
+
+\subsubsection*{Selecting the bias resistor}
+\label{ssec:appendix_lm4040_selecting_bias_resistor}
+
+The bias resistor connects between the LM4040s cathode and the supply voltage and sets the
+available output/load current $I_L$, as well as its bias current $I_Z$.
+
+The bias current is required to make the reference work and has to be within its operating
+current range, which is \enspace $\sim \!\! 100\mu A < I_Z < 15mA $ \enspace
+(depending on the exact reference used). We want to keep the bias current rather low to avoid
+the reference heating up too much, while staying within the range and keeping some distance to
+the extremes, so we target:
+
+\[ I_Z = 1mA \tag*{$(a)$}\label{tag:a} \]
+
+The load current is dependent on what is connected to the output of the reference. On the
+spark inducer all voltage references are being buffered by two OpAmps:
+
+\includegraphics[width=\textwidth, trim = 16.7cm 8.9cm 1.5cm 9.1cm, clip=true]{pdf/schematic.pdf}
+
+Thus, ignoring the input leakage currents of the OpAmps, the only load attached to the voltage
+reference is R10, which is connected to a virtual ground, so the load current is constant and
+equal to:
+
+\[ I_L = \frac{V_Z}{33k\Omega} \tag*{$(b)$}\label{tag:b} \]
+
+with $V_Z$ being the LM4040s Output-/Reference-Voltage.
+
+To calculate the value of the bias resistor, the LM4040s datasheet specifies the equation:
+
+\[ R_S = \frac{V_S - V_Z}{I_L + I_Z} \tag*{$(1)$} \]
+
+So for our application, with \ref{tag:a}, \ref{tag:b} and $V_S = 12V$ we get:
+
+\[ R_S = \frac{12V - V_Z}{\frac{V_Z}{33k \Omega} + 1mA} \tag*{$(2)$} \]
+
+You can use this equation to calculate the approximate value for the bias resistor of the
+spark inducers LM4040 voltage reference. Then select the closest E12 resistor value
+(or the closest resistor value you have on hand) and confirm that the operating current is
+\enspace $\sim 1mA$ \enspace with:
+
+\[
+    I_Z = \frac{V_S - V_Z}{R_{Selected}} - I_L \;\;\; \Rightarrow \;\;\;
+    I_Z = \frac{12V - V_Z}{R_{Selected}} - \frac{V_Z}{33k \Omega} \tag*{$(3)$}
+\]
+
+\subsection*{TL431B}
+\label{ssec:appendix_tl431b}
+
+TODO
+
+\subsection*{REF50xx}
+
+TODO
+
+\pagebreak
+\section*{Board View}
+\includegraphics[angle=90, origin=c, width=\textwidth]{pdf/back_silkscreen.pdf}
+
+\pagebreak
+\section*{Schematic}
+\includegraphics[angle=90, origin=c, width=\textwidth]{pdf/schematic.pdf}
+
+\pagebreak
+\section*{Bill of Materials}
+\begin{center}{
+    \scriptsize
+    \ibmplex
+    \setlength\extrarowheight{-5pt}
+    \csvreader[
+        separator = semicolon,
+        respect all,
+        head to column names,
+        tabular = l>{\raggedright}p{2.65cm}>{\raggedright}p{3.8cm}ll,
+        table head = \hline \\ Qty & Reference & Value & Part Number & Note \\ \hline,
+        table foot = \hline,
+    ]{bom.csv}{}{
+        \\ \Quantity\ & \Reference & \Value & \PartNumber & \SubstituteCriteria
+    }
+}\end{center}
+
+\end{document}
