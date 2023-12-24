@@ -82,11 +82,10 @@
 }
 
 \newcommand{\drawrect}[2]{
-    \draw[black, line width=2pt, rounded corners=3] (#1) rectangle (#2);
-    \draw[white, line width=1pt, rounded corners=3] (#1) rectangle (#2);
+    \draw[black, line width=1pt, rounded corners=3] (#1) rectangle (#2);
 }
 \newcommand{\drawtext}[2]{
-    \node[white] at (#1) {\contourlength{.075em}\contour{black}{#2}};
+    \node[black] at (#1) {{#2}};
 }
 
 \newcommand{\checkbox}[1]{\CheckBox[backgroundcolor=0.86 0.828 0.71, name=#1]{}}
@@ -333,24 +332,19 @@ bag. The remaining SMD components are in the main SMD Components bag.}
             \includegraphics[width=7cm]{images/03_01_components_topdown.jpg}
         };
         \begin{scope}[x={(image.south east)},y={(image.north west)}]
-            \drawrect{0.13, 0.70}{0.54, 0.86} \drawtext{0.34, 0.82}{1}
-            \drawrect{0.56, 0.70}{0.72, 0.86} \drawtext{0.64, 0.82}{2}
-            \drawrect{0.74, 0.70}{0.84, 0.86} \drawtext{0.79, 0.82}{3}
+            \drawtext{0.17, 0.79}{1}
+            \drawtext{0.80, 0.79}{2}
 
-            \drawrect{0.15, 0.52}{0.35, 0.66} \drawtext{0.25, 0.62}{4}
-            \drawrect{0.37, 0.52}{0.51, 0.66} \drawtext{0.44, 0.62}{5}
-            \drawrect{0.52, 0.52}{0.71, 0.66} \drawtext{0.615, 0.62}{6}
-            \drawrect{0.74, 0.52}{0.89, 0.66} \drawtext{0.81, 0.62}{7}
+            \drawtext{0.20, 0.51}{3}
+            \drawtext{0.20, 0.37}{4}
+            \drawtext{0.42, 0.61}{5}
+            \drawtext{0.56, 0.61}{6}
+            \drawtext{0.71, 0.61}{7}
 
-            \drawrect{0.15, 0.35}{0.30, 0.49} \drawtext{0.23, 0.45}{8}
-            \drawrect{0.33, 0.35}{0.43, 0.49} \drawtext{0.38, 0.45}{9}
-            \drawrect{0.46, 0.35}{0.64, 0.49} \drawtext{0.55, 0.45}{10}
-            \drawrect{0.66, 0.35}{0.86, 0.49} \drawtext{0.76, 0.45}{11}
-
-            \drawrect{0.12, 0.11}{0.37, 0.31} \drawtext{0.25, 0.26}{12}
-            \drawrect{0.39, 0.11}{0.51, 0.31} \drawtext{0.45, 0.26}{13}
-            \drawrect{0.53, 0.11}{0.82, 0.31} \drawtext{0.68, 0.26}{14}
-            \drawrect{0.83, 0.11}{0.90, 0.31} \drawtext{0.865, 0.26}{15}
+            \drawtext{0.26, 0.23}{8}
+            \drawtext{0.47, 0.25}{9}
+            \drawtext{0.63, 0.23}{10}
+            \drawtext{0.75, 0.23}{11}
         \end{scope}
     \end{tikzpicture}
     \hspace{2mm}
@@ -555,24 +549,26 @@ parts, which you can then use to build a second LFO board.
             \includegraphics[width=7cm]{images/10_01_smd_components_topdown.jpg}
         };
         \begin{scope}[x={(image.south east)},y={(image.north west)}]
-            \drawrect{0.13, 0.70}{0.54, 0.86} \drawtext{0.34, 0.82}{1}
-            \drawrect{0.56, 0.70}{0.72, 0.86} \drawtext{0.64, 0.82}{2}
-            \drawrect{0.74, 0.70}{0.84, 0.86} \drawtext{0.79, 0.82}{3}
+            \drawtext{0.30, 0.90}{1}
+            \drawtext{0.61, 0.88}{2}
+            \drawtext{0.78, 0.88}{3}
 
-            \drawrect{0.15, 0.52}{0.35, 0.66} \drawtext{0.25, 0.62}{4}
-            \drawrect{0.37, 0.52}{0.51, 0.66} \drawtext{0.44, 0.62}{5}
-            \drawrect{0.52, 0.52}{0.71, 0.66} \drawtext{0.615, 0.62}{6}
-            \drawrect{0.74, 0.52}{0.89, 0.66} \drawtext{0.81, 0.62}{7}
+            \drawtext{0.17, 0.68}{4}
+            \drawtext{0.345, 0.68}{5}
+            \drawtext{0.52, 0.68}{6}
+            \drawtext{0.65, 0.68}{7}
+            \drawtext{0.78, 0.68}{8}
 
-            \drawrect{0.15, 0.35}{0.30, 0.49} \drawtext{0.23, 0.45}{8}
-            \drawrect{0.33, 0.35}{0.43, 0.49} \drawtext{0.38, 0.45}{9}
-            \drawrect{0.46, 0.35}{0.64, 0.49} \drawtext{0.55, 0.45}{10}
-            \drawrect{0.66, 0.35}{0.86, 0.49} \drawtext{0.76, 0.45}{11}
+            \drawtext{0.155, 0.49}{9}
+            \drawtext{0.29, 0.49}{10}
+            \drawtext{0.45, 0.49}{11}
+            \drawtext{0.66, 0.49}{12}
+            \drawtext{0.84, 0.49}{13}
 
-            \drawrect{0.12, 0.11}{0.37, 0.31} \drawtext{0.25, 0.26}{12}
-            \drawrect{0.39, 0.11}{0.51, 0.31} \drawtext{0.45, 0.26}{13}
-            \drawrect{0.53, 0.11}{0.82, 0.31} \drawtext{0.68, 0.26}{14}
-            \drawrect{0.83, 0.11}{0.90, 0.31} \drawtext{0.865, 0.26}{15}
+            \drawtext{0.21, 0.30}{14}
+            \drawtext{0.40, 0.30}{15}
+            \drawtext{0.53, 0.28}{16}
+            \drawtext{0.75, 0.28}{17}
         \end{scope}
     \end{tikzpicture}
     \hspace{2mm}
@@ -594,13 +590,13 @@ parts, which you can then use to build a second LFO board.
         \hline  8 & 2 & \makebox[2em]{\hfill 33k} Resistor, 0805 0.1\% & 3302 & R10, R11\\
         \hline  9 & 1 & \makebox[3.2em]{\hfill 200mA} Resettable Fuse, 1206 & bF & F1\\
         \hline 10 & 2 & \makebox[3.2em]{\hfill 100mA} Resettable Fuse, 1206 & 0 & F2, F3\\
-        \hline 11 & 3 & 10uF Capacitor, 1206 & - & C5, C6, C7\\
-        \hline 12 & 3 & 1N5819HW Schottky Diode, SOD-123 & SL & D4, D5, D6\\
-        \hline 13 & 2 & TL072H OpAmp, SOIC8 & TL072D & U1, U2\\
-        \hline 14 & 1 & L78L05 Voltage Regulator, SOT-89 & 8C & U4\\
-        \hline 15 & 1 & LM4040 Voltage Reference, SOT-23 & Y2C & U5\\
-        \hline 16 & 6 & \makebox[2.8em]{\hfill 100nF} Capacitor, 0805 & - & C1, C2, C3, C4, C10, C11\\
-        \hline 17 & 1 & \makebox[2.8em]{\hfill 330nF} Capacitor, 0805 & - & C9\\
+        \hline 11 & 3 & 1N5819HW Schottky Diode, SOD-123 & SL & D4, D5, D6\\
+        \hline 12 & 3 & 10uF Capacitor, 1206 & - & C5, C6, C7\\
+        \hline 13 & 1 & \makebox[2.8em]{\hfill 330nF} Capacitor, 0805 & - & C9\\
+        \hline 14 & 2 & TL072H OpAmp, SOIC8 & TL072D & U1, U2\\
+        \hline 15 & 1 & L78L05 Voltage Regulator, SOT-89 & 8C & U4\\
+        \hline 16 & 1 & LM4040 Voltage Reference, SOT-23 & Y2C & U5\\
+        \hline 17 & 6 & \makebox[2.8em]{\hfill 100nF} Capacitor, 0805 & - & C1, C2, C3, C4, C10, C11\\
         \hline
     \end{tabularx}
 \end{center}
@@ -614,8 +610,8 @@ parts, which you can then use to build a second LFO board.
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier\\
-        \hline\checkbox{aa} & 12 & 3 & 1N5819HW Schottky Diode, SOD-123 & SL & D4, D5, D6\\
-        \hline\checkbox{ab} & 11 & 3 & 10uF Capacitor, 1206 & - & C5, C6, C7\\
+        \hline\checkbox{aa} & 11 & 3 & 1N5819HW Schottky Diode, SOD-123 & SL & D4, D5, D6\\
+        \hline\checkbox{ab} & 12 & 3 & 10uF Capacitor, 1206 & - & C5, C6, C7\\
         \hline\checkbox{ac} & 10 & 2 & \makebox[3.2em]{\hfill 100mA} Resettable Fuse, 1206 & 0 & F2, F3\\
         \hline\checkbox{ad} &  9 & 1 & \makebox[3.2em]{\hfill 200mA} Resettable Fuse, 1206 & bF & F1\\
         \hline
@@ -693,8 +689,8 @@ lenses can be damaged quite easily!}}
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier\\
-        \hline\checkbox{ca} & 13 & 1 & TL072H OpAmp, SOIC8 & TL072D & U1\\
-        \hline\checkbox{cb} & 16 & 2 & 100nF Capacitor, 0805 & - & C1, C2\\
+        \hline\checkbox{ca} & 14 & 1 & TL072H OpAmp, SOIC8 & TL072D & U1\\
+        \hline\checkbox{cb} & 17 & 2 & 100nF Capacitor, 0805 & - & C1, C2\\
         \hline\checkbox{cc} &  5 & 2 & 1k Resistor, 0805 1\% 1/4W & 1001 & R7, R8\\
         \hline
     \end{tabularx}
@@ -723,7 +719,7 @@ Then, solder the 100nF decoupling capacitors and the 1k outputs resistors.
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier\\
         \hline\checkbox{da} & 13 & 1 & TL072H OpAmp, SOIC8 & TL072D & U2\\
-        \hline\checkbox{db} & 16 & 5 & 100nF Capacitor, 0805 & - & C3, C4\\
+        \hline\checkbox{db} & 17 & 5 & 100nF Capacitor, 0805 & - & C3, C4\\
         \hline\checkbox{dc} &  8 & 2 & 33k Resistor, 0805 0.1\% & 3302 & R10, R11\\
         \hline
     \end{tabularx}
@@ -748,9 +744,9 @@ as well as the 33.0k precision resistors.
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier\\
-        \hline\checkbox{ea} & 14 & 1 & L78L05 Voltage Regulator, SOT-89 & 8C & U4\\
-        \hline\checkbox{eb} & 16 & 1 & \makebox[2.8em]{\hfill 100nF} Capacitor, 0805 & - & C10\\
-        \hline\checkbox{ec} & 17 & 1 & \makebox[2.8em]{\hfill 330nF} Capacitor, 0805 & - & C9\\
+        \hline\checkbox{ea} & 15 & 1 & L78L05 Voltage Regulator, SOT-89 & 8C & U4\\
+        \hline\checkbox{eb} & 17 & 1 & \makebox[2.8em]{\hfill 100nF} Capacitor, 0805 & - & C10\\
+        \hline\checkbox{ec} & 13 & 1 & \makebox[2.8em]{\hfill 330nF} Capacitor, 0805 & - & C9\\
         \hline
     \end{tabularx}
 \end{center}
@@ -788,9 +784,9 @@ Then, assemble the 330nF input and 100nF output capacitors.
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier\\
-        \hline\checkbox{la} & 15 & 1 & LM4040 Voltage Reference, SOT-23 & Y2C & U5\\
+        \hline\checkbox{la} & 16 & 1 & LM4040 Voltage Reference, SOT-23 & Y2C & U5\\
         \hline\checkbox{lb} &  7 & 1 & 10k Resistor, 0805 1\% & 1002 & R9\\
-        \hline\checkbox{lc} & 16 & 1 & 100nF Capacitor, 0805 & - & C11\\
+        \hline\checkbox{lc} & 17 & 1 & 100nF Capacitor, 0805 & - & C11\\
         \hline\checkbox{ld} &  2 & 1 & 2×4 Header & - & J18\\
         \hline\checkbox{le} &  3 & 1 & Jumper & - & -\\
         \hline
@@ -904,8 +900,8 @@ Solder the REF50xx reference IC first, then solder the input and output decoupli
             \includegraphics[width=7cm]{images/20_01_breadboard_headers_topdown.jpg}
         };
         \begin{scope}[x={(image.south east)},y={(image.north west)}]
-            \drawrect{0.03, 0.50}{0.97, 0.80} \drawtext{0.5, 0.75}{1}
-            \drawrect{0.03, 0.10}{0.97, 0.48} \drawtext{0.5, 0.43}{2}
+            \drawtext{0.50, 0.68}{1}
+            \drawtext{0.51, 0.335}{2}
         \end{scope}
     \end{tikzpicture}
     \hspace{2mm}
@@ -917,8 +913,8 @@ Solder the REF50xx reference IC first, then solder the input and output decoupli
     \setlength\extrarowheight{4pt}
     \begin{tabularx}{\textwidth}{|c|c|X|l|}
         \hline \rowcolor{lightgray} ID & Qty & Description & PCB Identifier / Ref\\
-        \hline 1 & 8 & 1×6 Right Angle Header & J10, J11, J12, J13, J14, J15, J16, J17\\
-        \hline 2 & 8 & 2×4 Header & J19, J20, J21, J22, J23, J24, J25, J26\\
+        \hline 1 & 8 & 2×4 Header & J19, J20, J21, J22, J23, J24, J25, J26\\
+        \hline 2 & 8 & 1×6 Right Angle Header & J10, J11, J12, J13, J14, J15, J16, J17\\
         \hline
     \end{tabularx}
 \end{center}
@@ -932,7 +928,7 @@ Solder the REF50xx reference IC first, then solder the input and output decoupli
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & PCB Identifier\\
-        \hline\checkbox{fa} & 2 & 8 & 2×4 Header & J19, J20, J21, J22, J23, J24, J25, J26\\
+        \hline\checkbox{fa} & 1 & 8 & 2×4 Header & J19, J20, J21, J22, J23, J24, J25, J26\\
         \hline
     \end{tabularx}
 \end{center}
@@ -965,7 +961,7 @@ reach them, as shown. Be careful not to melt the plastic of the headers.
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & PCB Identifier\\
-        \hline\checkbox{ga} & 1 & 8 & 1×6 Right Angle Header & J10, J11, J12, J13, J14, J15, J16, J17\\
+        \hline\checkbox{ga} & 2 & 8 & 1×6 Right Angle Header & J10, J11, J12, J13, J14, J15, J16, J17\\
         \hline
     \end{tabularx}
 \end{center}
@@ -1009,21 +1005,22 @@ Finally, solder all the remaining pins.
             \includegraphics[width=7cm]{images/30_01_frontpanel_components_topdown.jpg}
         };
         \begin{scope}[x={(image.south east)},y={(image.north west)}]
-            \drawrect{0.13, 0.92}{0.91, 0.995} \drawtext{0.52, 0.96}{1}
-            \drawrect{0.13, 0.77}{0.91, 0.91} \drawtext{0.52, 0.84}{2}
-            \drawrect{0.13, 0.64}{0.91, 0.76} \drawtext{0.52, 0.70}{3}
+            \drawtext{0.11, 0.89}{1}
+            \drawtext{0.11, 0.79}{2}
+            \drawtext{0.11, 0.69}{3}
 
-            \drawrect{0.13, 0.47}{0.26, 0.61} \drawtext{0.19, 0.54}{4}
-            \drawrect{0.28, 0.47}{0.88, 0.61} \drawtext{0.59, 0.54}{8}
+            \drawtext{0.12, 0.58}{4}
+            \drawtext{0.405, 0.58}{5}
+            \drawtext{0.10, 0.47}{6}
+            \drawtext{0.415, 0.47}{7}
 
-            \drawrect{0.12, 0.34}{0.28, 0.46} \drawtext{0.20, 0.40}{7}
-            \drawrect{0.29, 0.34}{0.88, 0.46} \drawtext{0.59, 0.40}{9}
+            \drawtext{0.92, 0.58}{8}
+            \drawtext{0.92, 0.48}{9}
+            \drawtext{0.92, 0.385}{10}
+            \drawtext{0.92, 0.27}{11}
+            \drawtext{0.92, 0.14}{12}
 
-            \drawrect{0.12, 0.21}{0.27, 0.33} \drawtext{0.19, 0.27}{6}
-            \drawrect{0.29, 0.21}{0.88, 0.33} \drawtext{0.59, 0.27}{10}
-
-            \drawrect{0.11, 0.01}{0.27, 0.19} \drawtext{0.19, 0.15}{5}
-            \drawrect{0.28, 0.01}{0.88, 0.19} \drawtext{0.58, 0.15}{11}
+            \drawtext{0.25, 0.24}{13}
         \end{scope}
     \end{tikzpicture}
     \hspace{2mm}
@@ -1231,6 +1228,8 @@ with the first line on the scale.
             \includegraphics[width=7cm]{images/40_01_breadboards_topdown.jpg}
         };
         \begin{scope}[x={(image.south east)},y={(image.north west)}]
+            \drawtext{0.415, 0.81}{1}
+            \drawtext{0.907, 0.79}{2}
         \end{scope}
     \end{tikzpicture}
     \hspace{2mm}
