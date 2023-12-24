@@ -160,6 +160,12 @@ headers.
     \vspace{5mm}
 }
 
+If you need any help with the build or have any question/remarks about this guide, feel free to
+message us via the support page at:
+\href{https://protorack.de/support}{https://protorack.de/support}
+
+Happy soldering!
+
 \pagebreak
 
 \section*{Required Tools}
@@ -424,7 +430,8 @@ remaining pads. This way, you do not have to switch between solder and tweezers 
 
 Next up is the indicator LED. This needs to be soldered upside-down, so it can shine through the
 PCB substrate. Orient it as shown in the picture below, with the green T-shaped marking facing
-up and solder it in place.
+up and solder it in place. \textbf{Make sure the solder is properly bridging the gap between the
+LED and the pads on the PCB.}
 
 \begin{figure}[H]
     \centering
@@ -1132,11 +1139,16 @@ wires.
     \vspace{5mm}
 }
 
-Take two audio jacks and knurled nuts and attach them to the two holes on the first row
-(from top to bottom) of the PCB. Align them so that they fit into the box marked on the
-back side of the PCB.
+Take two audio jacks and knurled nuts and attach them to the top two holes of the main PCB.
+Align them so that they fit into the box marked on the back side of the main PCB.
 
-Add two audio jack PCBs to the audio jacks and solder all the pins.
+Add two audio jack PCBs (with the side that says JACK facing up) to the audio jacks and solder
+all the pins.
+
+\textit{%
+    Note: The audio jack PCBs come together on one panel PCB. Break them apart at the V-Scores.
+    To remove the tabs between them, a pair of pliers can be helpful.
+}
 
 \begin{figure}[H]
     \centering
@@ -1257,8 +1269,8 @@ Take the completed PCB and align the headers to the breadboards. Then, carefully
 together to finish the assembly!
 
 \textit{%
-    Note: You do not have to push in all the headers at once. You can go from top to bottom or
-    start with the corners and work your way towards the center. Do not apply extensive force!
+    Note: Do not push in all the headers at once. Do all the corners one by one and then finish
+    with the center.
 }
 
 \begin{figure}[H]
@@ -1269,6 +1281,9 @@ together to finish the assembly!
     \hspace{2mm}
     \includegraphics[width=46mm]{images/40_05_fully_assembled.jpg}
 \end{figure}
+
+Congratulations! You are done with the main build. Next, checkout the
+\href{https://protorack.de/modules/spark-inducer/manual}{user manual}!
 
 \pagebreak
 \subsection{\smaller (optional) \enspace \larger Gluing}
