@@ -366,12 +366,12 @@ bag. The remaining SMD components are in the main SMD Components bag.}
         \hline  2 & 2 & 2×1 Header & - & - & J5, J6\\
         \hline  3 & 1 & Red LED, 1206 & - & D3 & D3\\
         \hline  4 & 2 & \makebox[2em]{\hfill 1k} Resistor, 0805 1\% 1/4W & 1001 & 1k & R8, R11\\
-        \hline  5 & 3 & \makebox[2em]{\hfill 10k} Resistor, 0805 1\% & TODO & 10k & R5, R7, R10\\
-        \hline  6 & 3 & \makebox[2em]{\hfill 47k} Resistor, 0805 1\% & TODO & 47k & R2, R3, R4\\
-        \hline  7 & 3 & \makebox[2em]{\hfill 100k} Resistor, 0805 1\% & TODO & 100k & R1, R6, R9\\
-        \hline  8 & 2 & 1N5819HW Schottky Diode, SOD-123 & TODO & 1N5819HW & D1, D2\\
-        \hline  9 & 1 & TL072H OpAmp, SOIC8 & TODO & TL072H & U1\\
-        \hline 10 & 1 & BC848 NPN Transistor, SOT-23 & TODO & BC848 & Q1\\
+        \hline  5 & 3 & \makebox[2em]{\hfill 10k} Resistor, 0805 1\% & 1002 & 10k & R5, R7, R10\\
+        \hline  6 & 3 & \makebox[2em]{\hfill 47k} Resistor, 0805 1\% & 4702 & 47k & R2, R3, R4\\
+        \hline  7 & 3 & \makebox[2em]{\hfill 100k} Resistor, 0805 1\% & 1003 & 100k & R1, R6, R9\\
+        \hline  8 & 2 & 1N5819HW Schottky Diode, SOD-123 & SL & 1N5819HW & D1, D2\\
+        \hline  9 & 1 & TL072H OpAmp, SOIC8 & TL072D & TL072H & U1\\
+        \hline 10 & 1 & BC848 NPN Transistor, SOT-23 & 1K & BC848 & Q1\\
         \hline 11 & 1 & 100nF Capacitor, 0805 & - & 100nF & C1\\
         \hline
     \end{tabularx}
@@ -386,8 +386,8 @@ bag. The remaining SMD components are in the main SMD Components bag.}
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|L|l|l|>{\smaller}l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier & \larger Ref\\
-        \hline\checkbox{za} &  5 & 3 & \makebox[1.5em]{\hfill 10k} Resistor, 0805 1\% & TODO & 10k & R5, R7, R10\\
-        \hline\checkbox{zb} &  6 & 3 & \makebox[1.5em]{\hfill 47k} Resistor, 0805 1\% & TODO & 47k & R2, R3, R4\\
+        \hline\checkbox{za} &  5 & 3 & \makebox[1.5em]{\hfill 10k} Resistor, 0805 1\% & 1002 & 10k & R5, R7, R10\\
+        \hline\checkbox{zb} &  6 & 3 & \makebox[1.5em]{\hfill 47k} Resistor, 0805 1\% & 4702 & 47k & R2, R3, R4\\
         \hline
     \end{tabularx}
 \end{center}
@@ -423,7 +423,7 @@ remaining pads. This way, you do not have to switch between solder and tweezers 
     \begin{tabularx}{\textwidth}{|c|c|c|L|l|l|>{\smaller}l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier & \larger Ref\\
         \hline\checkbox{ya} &  3 & 1 & Red LED, 1206 & - & D3 & D3\\
-        \hline\checkbox{yb} &  8 & 2 & 1N5819HW Schottky Diode & TODO & 1N5819HW & D1, D2\\
+        \hline\checkbox{yb} &  8 & 2 & 1N5819HW Schottky Diode & SL & 1N5819HW & D1, D2\\
         \hline
     \end{tabularx}
 \end{center}
@@ -459,15 +459,18 @@ Changing the angle the light is coming from can also help you to spot it.}
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|L|l|l|>{\smaller}l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier & \larger Ref\\
-        \hline\checkbox{xb} &  9 & 1 & TL072H OpAmp, SOIC8 & TODO & TL072H & U1\\
-        \hline\checkbox{xa} & 10 & 1 & BC848 NPN Transistor & TODO & BC848 & Q1\\
+        \hline\checkbox{xb} &  9 & 1 & TL072H OpAmp, SOIC8 & TL072D & TL072H & U1\\
+        \hline\checkbox{xa} & 10 & 1 & BC848 NPN Transistor & 1K & BC848 & Q1\\
         \hline
     \end{tabularx}
 \end{center}
 
-For the TL072H OpAmp, solder one pin in place and then carefully check the alignment of all the
-other ones. Reheat the pin and reorient it if necessary. If it is rotated a little, you can also
-get away with very carefully bending it into place using your tweezers.
+For the TL072H OpAmp orientation also matters. The white line on the Package has to be on
+the same side as the longer white line on the PCB.
+
+Solder one pin in place and then carefully check the alignment of all the other ones. Reheat the
+pin and reorient it if necessary. If it is rotated a little, you can also get away with very
+carefully bending it into place using your tweezers.
 
 Once the alignment looks good, solder the remaining pins, one by one and check that there are
 no short-circuits between them.
@@ -490,7 +493,7 @@ Do the same for the BC848 transistor. Make sure it is centered well.
         \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier & \larger Ref\\
         \hline\checkbox{wa} & 11 & 1 & 100nF Capacitor, 0805 & - & 100nF & C1\\
         \hline\checkbox{wb} &  4 & 2 & \makebox[2em]{\hfill 1k} Resistor, 0805 1\% & 1001 & 1k & R8, R11\\
-        \hline\checkbox{wc} &  7 & 3 & \makebox[2em]{\hfill 100k} Resistor, 0805 1\% & TODO & 100k & R1, R6, R9\\
+        \hline\checkbox{wc} &  7 & 3 & \makebox[2em]{\hfill 100k} Resistor, 0805 1\% & 1003 & 100k & R1, R6, R9\\
         \hline
     \end{tabularx}
 \end{center}
@@ -587,15 +590,15 @@ parts, which you can then use to build a second LFO board.
         \hline  4 & 3 & Red LED, 1206 & - & D1, D2, D3\\
         \hline  5 & 3 & \makebox[2em]{\hfill 1k} Resistor, 0805 1\% 1/4W & 1001 & R1, R7, R8\\
         \hline  6 & 2 & \makebox[2em]{\hfill 3.3k} Resistor, 0805 1\%  & 3301 & R2, R3\\
-        \hline  7 & 1 & \makebox[2em]{\hfill 10k} Resistor, 0805 1\% & TODO & R9\\
-        \hline  8 & 2 & \makebox[2em]{\hfill 33k} Resistor, 0805 0.1\% & 333 & R10, R11\\
-        \hline  9 & 1 & \makebox[3.2em]{\hfill 200mA} Resettable Fuse, 1206 & TODO & F1\\
-        \hline 10 & 2 & \makebox[3.2em]{\hfill 100mA} Resettable Fuse, 1206 & TODO & F2, F3\\
+        \hline  7 & 1 & \makebox[2em]{\hfill 10k} Resistor, 0805 1\% & 1002 & R9\\
+        \hline  8 & 2 & \makebox[2em]{\hfill 33k} Resistor, 0805 0.1\% & 3302 & R10, R11\\
+        \hline  9 & 1 & \makebox[3.2em]{\hfill 200mA} Resettable Fuse, 1206 & bF & F1\\
+        \hline 10 & 2 & \makebox[3.2em]{\hfill 100mA} Resettable Fuse, 1206 & 0 & F2, F3\\
         \hline 11 & 3 & 10uF Capacitor, 1206 & - & C5, C6, C7\\
-        \hline 12 & 3 & 1N5819HW Schottky Diode, SOD-123 & TODO & D4, D5, D6\\
-        \hline 13 & 2 & TL072H OpAmp, SOIC8 & TODO & U1, U2\\
-        \hline 14 & 1 & L78L05 Voltage Regulator, SOT-89 & TODO & U4\\
-        \hline 15 & 1 & LM4040 Voltage Reference, SOT-23 & TODO & U5\\
+        \hline 12 & 3 & 1N5819HW Schottky Diode, SOD-123 & SL & D4, D5, D6\\
+        \hline 13 & 2 & TL072H OpAmp, SOIC8 & TL072D & U1, U2\\
+        \hline 14 & 1 & L78L05 Voltage Regulator, SOT-89 & 8C & U4\\
+        \hline 15 & 1 & LM4040 Voltage Reference, SOT-23 & Y2C & U5\\
         \hline 16 & 6 & \makebox[2.8em]{\hfill 100nF} Capacitor, 0805 & - & C1, C2, C3, C4, C10, C11\\
         \hline 17 & 1 & \makebox[2.8em]{\hfill 330nF} Capacitor, 0805 & - & C9\\
         \hline
@@ -611,20 +614,21 @@ parts, which you can then use to build a second LFO board.
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier\\
-        \hline\checkbox{aa} & 12 & 3 & 1N5819HW Schottky Diode, SOD-123 & TODO & D4, D5, D6\\
+        \hline\checkbox{aa} & 12 & 3 & 1N5819HW Schottky Diode, SOD-123 & SL & D4, D5, D6\\
         \hline\checkbox{ab} & 11 & 3 & 10uF Capacitor, 1206 & - & C5, C6, C7\\
-        \hline\checkbox{ac} & 10 & 2 & \makebox[3.2em]{\hfill 100mA} Resettable Fuse, 1206 & TODO & F2, F3\\
-        \hline\checkbox{ad} &  9 & 1 & \makebox[3.2em]{\hfill 200mA} Resettable Fuse, 1206 & TODO & F1\\
+        \hline\checkbox{ac} & 10 & 2 & \makebox[3.2em]{\hfill 100mA} Resettable Fuse, 1206 & 0 & F2, F3\\
+        \hline\checkbox{ad} &  9 & 1 & \makebox[3.2em]{\hfill 200mA} Resettable Fuse, 1206 & bF & F1\\
         \hline
     \end{tabularx}
 \end{center}
 
 Start by soldering the 1N5819HW Schottky diodes and 10uF decoupling capacitors for each of the
-three power rails. \textbf{Mind the polarity of the diodes!}
+three power rails. \textbf{Mind the polarity of the diodes! The white line on them has to align
+with the line on the PCB.}
 
-Then, do the same for the resettable PTC fuses. The two green ones are for the +12V and -12V
+Then, do the same for the resettable PTC fuses. The two black ones are for the +12V and -12V
 power rails and can hold a maximum current of 100mA indefinitely and will trip at
-\textasciitilde 250mA. The black one is for the +5V rail and has a hold current of 200mA and
+\textasciitilde 250mA. The green one is for the +5V rail and has a hold current of 200mA and
 will trip at \textasciitilde 400mA. (This should be enough for most circuits, even ones
 including power-hungry digital microcontrollers.)
 
@@ -689,14 +693,14 @@ lenses can be damaged quite easily!}}
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier\\
-        \hline\checkbox{ca} & 13 & 1 & TL072H OpAmp, SOIC8 & TODO & U1\\
+        \hline\checkbox{ca} & 13 & 1 & TL072H OpAmp, SOIC8 & TL072D & U1\\
         \hline\checkbox{cb} & 16 & 2 & 100nF Capacitor, 0805 & - & C1, C2\\
         \hline\checkbox{cc} &  5 & 2 & 1k Resistor, 0805 1\% 1/4W & 1001 & R7, R8\\
         \hline
     \end{tabularx}
 \end{center}
 
-First, solder the TL072B. Make sure to line up the little dot that marks Pin 1 with the marker
+First, solder the TL072H. Make sure to line up the little dot that marks Pin 1 with the marker
 on the PCB.
 
 Then, solder the 100nF decoupling capacitors and the 1k outputs resistors.
@@ -718,14 +722,14 @@ Then, solder the 100nF decoupling capacitors and the 1k outputs resistors.
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier\\
-        \hline\checkbox{da} & 13 & 1 & TL072H OpAmp, SOIC8 & TODO & U2\\
+        \hline\checkbox{da} & 13 & 1 & TL072H OpAmp, SOIC8 & TL072D & U2\\
         \hline\checkbox{db} & 16 & 5 & 100nF Capacitor, 0805 & - & C3, C4\\
-        \hline\checkbox{dc} &  8 & 2 & 33k Resistor, 0805 0.1\% & 333 & R10, R11\\
+        \hline\checkbox{dc} &  8 & 2 & 33k Resistor, 0805 0.1\% & 3302 & R10, R11\\
         \hline
     \end{tabularx}
 \end{center}
 
-Once again, start by soldering the TL072B, then, solder the 100nF decoupling capacitors,
+Once again, start by soldering the TL072H, then solder the 100nF decoupling capacitors,
 as well as the 33.0k precision resistors.
 
 \begin{figure}[H]
@@ -744,7 +748,7 @@ as well as the 33.0k precision resistors.
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier\\
-        \hline\checkbox{ea} & 14 & 1 & L78L05 Voltage Regulator, SOT-89 & TODO & U4\\
+        \hline\checkbox{ea} & 14 & 1 & L78L05 Voltage Regulator, SOT-89 & 8C & U4\\
         \hline\checkbox{eb} & 16 & 1 & \makebox[2.8em]{\hfill 100nF} Capacitor, 0805 & - & C10\\
         \hline\checkbox{ec} & 17 & 1 & \makebox[2.8em]{\hfill 330nF} Capacitor, 0805 & - & C9\\
         \hline
@@ -784,8 +788,8 @@ Then, assemble the 330nF input and 100nF output capacitors.
     \setlength\extrarowheight{8pt}
     \begin{tabularx}{\textwidth}{|c|c|c|X|l|l|}
         \hline\rowcolor{lightgray} & ID & Qty & Description & Code on Part & PCB Identifier\\
-        \hline\checkbox{la} & 15 & 1 & LM4040 Voltage Reference, SOT-23 & TODO & U5\\
-        \hline\checkbox{lb} &  7 & 1 & 10k Resistor, 0805 1\% & TODO & R9\\
+        \hline\checkbox{la} & 15 & 1 & LM4040 Voltage Reference, SOT-23 & Y2C & U5\\
+        \hline\checkbox{lb} &  7 & 1 & 10k Resistor, 0805 1\% & 1002 & R9\\
         \hline\checkbox{lc} & 16 & 1 & 100nF Capacitor, 0805 & - & C11\\
         \hline\checkbox{ld} &  2 & 1 & 2×4 Header & - & J18\\
         \hline\checkbox{le} &  3 & 1 & Jumper & - & -\\
@@ -1179,7 +1183,7 @@ should not be any continuity between any of the wires.
         \hline\checkbox{jb} &  9 & 4 & Potentiometer Nut & -\\
         \hline\checkbox{jc} & 10 & 4 & Potentiometer Spacer & -\\
         \hline\checkbox{jd} & 11 & 4 & 100k Potentiometer (linear) & RV1, RV2, RV3, RV4\\
-        \hline\checkbox{je} & 12 & 4 & Potentiometer Dust Covers & -\\  % TODO: add instructions
+        \hline\checkbox{je} & 12 & 4 & Potentiometer Dust Covers & -\\
         \hline
     \end{tabularx}
 \end{center}
