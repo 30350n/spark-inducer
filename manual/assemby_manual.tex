@@ -1378,20 +1378,138 @@ TODO
 
 \pagebreak
 \section*{Bill of Materials}
-\begin{center}{
+
+\subsubsection*{PCBs}
+\vspace*{-2mm}
+{
     \scriptsize
     \ibmplex
     \setlength\extrarowheight{-5pt}
-    \csvreader[
-        separator = semicolon,
+    \csvreader[%
+        separator=semicolon,
         respect all,
         head to column names,
-        tabular = l>{\raggedright}p{2.65cm}>{\raggedright}p{3.8cm}ll,
-        table head = \hline \\ Qty & Reference & Value & Part Number & Note \\ \hline,
+        filter={\(\thecsvinputline>1\) \and \(\thecsvinputline<5\)},
+        tabular = lp{\dimexpr 14cm - 9.94722pt},
+        table head = \hline \\ Qty & Identifier \\ \hline,
         table foot = \hline,
-    ]{bom.csv}{}{
-        \\ \Quantity\ & \Reference & \Value & \PartNumber & \SubstituteCriteria
+    ]{bom.csv}{Substitution Criteria=\Identifier}{
+        \\ \Quantity\ & \Identifier
     }
-}\end{center}
+}
+
+\subsubsection*{SMD Components}
+\vspace*{-2mm}
+{
+    \scriptsize
+    \ibmplex
+    \setlength\extrarowheight{-5pt}
+    \csvreader[%
+        separator=semicolon,
+        respect all,
+        head to column names,
+        filter={\(\thecsvinputline>5\) \and \(\thecsvinputline<23\)},
+        tabular = l>{\raggedright}p{2.0cm}lllp{\dimexpr 5cm - 17.17795pt},
+        table head = \hline \\ Qty & Reference & Value & Package & Substitution Criteria & Manufacturer Part Number \\ \hline,
+        table foot = \hline,
+    ]{bom.csv}{Substitution Criteria=\SC, Manufacturer Part Number=\MPN}{
+        \\ \Quantity\ & \Reference & \Value & \Package & \SC & \MPN
+    }
+}
+
+\subsubsection*{\smaller (extra) \enspace \larger TL431B Reference}
+\vspace*{-2mm}
+{
+    \scriptsize
+    \ibmplex
+    \setlength\extrarowheight{-5pt}
+    \csvreader[%
+        separator=semicolon,
+        respect all,
+        head to column names,
+        filter={\(\thecsvinputline>23\) \and \(\thecsvinputline<29\)},
+        tabular = l>{\raggedright}p{2.0cm}lllp{\dimexpr 5cm - 17.17795pt},
+        table head = \hline \\ Qty & Reference & Value & Package & Substitution Criteria & Manufacturer Part Number \\ \hline,
+        table foot = \hline,
+    ]{bom.csv}{Substitution Criteria=\SC, Manufacturer Part Number=\MPN}{
+        \\ \Quantity\ & \Reference & \Value & \Package & \SC & \MPN
+    }
+}
+
+\subsubsection*{\smaller (extra) \enspace \larger REF50xx Reference}
+\vspace*{-2mm}
+{
+    \scriptsize
+    \ibmplex
+    \setlength\extrarowheight{-5pt}
+    \csvreader[%
+        separator=semicolon,
+        respect all,
+        head to column names,
+        filter={\(\thecsvinputline>29\) \and \(\thecsvinputline<32\)},
+        tabular = l>{\raggedright}p{2.0cm}lllp{\dimexpr 5cm - 17.17795pt},
+        table head = \hline \\ Qty & Reference & Value & Package & Substitution Criteria & Manufacturer Part Number \\ \hline,
+        table foot = \hline,
+    ]{bom.csv}{Substitution Criteria=\SC, Manufacturer Part Number=\MPN}{
+        \\ \Quantity\ & \Reference & \Value & \Package & \SC & \MPN
+    }
+}
+
+\subsubsection*{Headers}
+\vspace*{-2mm}
+{
+    \scriptsize
+    \ibmplex
+    \setlength\extrarowheight{-5pt}
+    \csvreader[%
+        separator=semicolon,
+        respect all,
+        head to column names,
+        filter={\(\thecsvinputline>32\) \and \(\thecsvinputline<35\)},
+        tabular = l>{\raggedright}p{8.83cm}p{\dimexpr 5cm - 17.1103pt},
+        table head = \hline \\ Qty & Reference & Manufacturer Part Number \\ \hline,
+        table foot = \hline,
+    ]{bom.csv}{Manufacturer Part Number=\MPN}{
+        \\ \Quantity\ & \Reference & \MPN
+    }
+}
+
+\subsubsection*{Front Panel Components}
+\vspace*{-2mm}
+{
+    \scriptsize
+    \ibmplex
+    \setlength\extrarowheight{-5pt}
+    \csvreader[%
+        separator=semicolon,
+        respect all,
+        head to column names,
+        filter={\(\thecsvinputline>35\) \and \(\thecsvinputline<48\)},
+        tabular = p{0.7cm}>{\raggedright}p{3.32cm}lp{\dimexpr 5cm - 17.05263pt},
+        table head = \hline \\ Qty & Reference & Substitution Criteria & Manufacturer Part Number \\ \hline,
+        table foot = \hline,
+    ]{bom.csv}{Substitution Criteria=\SC, Manufacturer Part Number=\MPN}{
+        \\ \Quantity\ & \Reference & \SC & \MPN
+    }
+}
+
+\subsubsection*{Breadboards}
+\vspace*{-2mm}
+{
+    \scriptsize
+    \ibmplex
+    \setlength\extrarowheight{-5pt}
+    \csvreader[%
+        separator=semicolon,
+        respect all,
+        head to column names,
+        filter={\(\thecsvinputline>48\) \and \(\thecsvinputline<51\)},
+        tabular = p{0.7cm}>{\raggedright}p{3.32cm}p{4.90cm}p{\dimexpr 5cm - 17.27094pt},
+        table head = \hline \\ Qty & Reference & Substitution Criteria & Manufacturer Part Number \\ \hline,
+        table foot = \hline,
+    ]{bom.csv}{Substitution Criteria=\SC, Manufacturer Part Number=\MPN}{
+        \\ \Quantity\ & \Reference & \SC & \MPN
+    }
+}
 
 \end{document}
