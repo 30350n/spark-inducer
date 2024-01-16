@@ -57,3 +57,6 @@ Extra Full Kit Parts;8;C1, C2, C3, C4, C10, C11 + 2;100nF;0805;Capacitor, 25V, X
 ;6;+6;47k;0805;Resistor, 1/8W, 1%;>=1/8W, 1%;RC0805FR-0747KL;;;yellow #FED16A;4702
 ;6;+6;100k;0805;Resistor, 1/8W, 1%;>=1/8W, 1%;RC0805FR-07100KL;;;dark blue #0754A4;1003
 ;2;+2;-;SOT-23;BC848 NPN Transistor;-;BC848BLT3G;;;;1K
+;2;-;-;-;P-02 LFO PCB | Rev.0;;-;;;;
+;4;+4;-;-;1x2 Header;-;DS1021-1*2SF11-B;;;;
+;8;+8;-;-;2x2 Header;-;DS1021-2*2SF11-B;;;;
