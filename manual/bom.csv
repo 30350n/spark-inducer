@@ -1,59 +1,59 @@
-;Quantity;Reference;Value;Package;Substitution Criteria;Manufacturer Part Number;KiCad Value;Footprint;Color Marking;Code on Part
-PCBs;1;-;-;-;Spark Inducer Main PCB;-;;;;
-;8;-;-;-;Spark Inducer Helper Jack PCB;-;;;;
-;1;-;-;-;Spark Inducer Helper Switch PCB;-;;;;
-;;;;;;;;;;
-SMD Components;6;C1, C2, C3, C4, C10, C11;100nF;0805;>=25V, X5R/X7R;CL21B104KACNNNC;100nF;C_0805_2012Metric_Pad1.18x1.45mm_HandSolder;turquoise #C8E6E6;
-;3;C5, C6, C7;10uF;1206;>=25V, X5R/X7R;CL31A106KAHNFNE;10uF;C_1206_3216Metric_Pad1.33x1.80mm_HandSolder;;
-;1;C9;330nF;0805;>=25V, X5R/X7R;CL21B334KBFNNNE;330nF;C_0805_2012Metric_Pad1.18x1.45mm_HandSolder;;
-;3;D1, D2, D3;-;1206;red, ~230mcd @ 20mA;APT3216SURCK;APT3216;LED_1206_3216Metric_ReverseMount_HandSolder;;
-;3;D4, D5, D6;-;SOD-123;-;1N5819HW-7-F;1N5819;D_SOD-123;;SL
-;1;F1;-;1206;-;0ZCJ0020FF2E;200mA;Fuse_1206_3216Metric_Pad1.42x1.75mm_HandSolder;;bF
-;2;F2, F3;-;1206;-;SMD1206B010TF;100mA;Fuse_1206_3216Metric_Pad1.42x1.75mm_HandSolder;;0
-;1;J1;-;-;-;SBH11-NBPC-D08-SM-BK;Eurorack_Power_Header;Eurorack_Power_Header_2x08_SMD_HandSolder;;
-;1;J18;-;-;-;54202-S08-04;REF_SELECT;PinHeader_2x04_P2.54mm_Vertical_SMD;;
-;1;J18;-;-;-;SPC02SYAN;REF_SELECT;;;
-;3;R1, R7, R8;1k;0805;>=1/4W, 1%;RC0805FR-7W1KL;1k;R_0805_2012Metric_Pad1.20x1.40mm_HandSolder;gray #788895;1001
-;2;R2, R3;3.3k;0805;>=1/8W, 1%;RC0805FR-073K3L;3.3k;R_0805_2012Metric_Pad1.20x1.40mm_HandSolder;red #E32B45;3301
-;1;R9;10k;0805;>=1/8W, 1%;RC0805FR-0710KL;RS;R_0805_2012Metric_Pad1.20x1.40mm_HandSolder;black #131723;1002
-;2;R10, R11;33k;0805;>=1/8W, 0.1%;RT0805BRD0733KL;33k 0.1%;R_0805_2012Metric_Pad1.20x1.40mm_HandSolder;light blue #5BC6F2;3302
-;2;U1, U2;-;SOIC-8;-;TL072HIDR;TL072H;SOIC-8_3.9x4.9mm_P1.27mm;;TL072D
-;1;U4;-;SOT-89;L78Lxx;L78L05ABUTR;L78Lxx;SOT-89-3_ThermalReliefs;;8C
-;1;U5;-;SOT-23;LM4040;LM4040CYM3-2.5-TR;LM4040;SOT-23;white #F1F0EA;Y2C
-;;;;;;;;;;
-Optional TL431B Reference;1;C8;10uF;1206;>=25V, X5R/X7R;CL31A106KAHNFNE;10uF;C_1206_3216Metric_Pad1.33x1.80mm_HandSolder;;
-;1;R5;R1;0805;>=1/8W, <=1%;-;R1;R_0805_2012Metric_Pad1.20x1.40mm_HandSolder;;
-;1;R6;R2;0805;>=1/8W, <=1%;-;R2;R_0805_2012Metric_Pad1.20x1.40mm_HandSolder;;
-;1;R4;RS;0805;>=1/8W, 1%;-;RS;R_0805_2012Metric_Pad1.20x1.40mm_HandSolder;;
-;1;U3;-;SOIC-8;TL431B;TL431BID;TL431B;SOIC-8_3.9x4.9mm_P1.27mm;;TODO
-;;;;;;;;;;
-Optional REF50xx Reference;2;C12, C13;1uF;0805;>=25V, X5R/X7R;CL21B105KAFNNNG;1uF;C_0805_2012Metric_Pad1.18x1.45mm_HandSolder;;
-;1;U6;-;SOIC-8;REF50xx;-;REF50xx;SOIC-8_3.9x4.9mm_P1.27mm;;TODO
-;;;;;;;;;;
-Headers;8;J19, J20, J21, J22, J23, J24, J25, J26;-;-;-;54202-S08-04;POWER_A_1, POWER_A_2, POWER_A_3, POWER_A_4, POWER_B_1, POWER_B_2, POWER_B_3, POWER_B_4;PinHeader_2x04_P2.54mm_Vertical_SMD;;
-;8;J10, J11, J12, J13, J14, J15, J16, J17;-;-;-;TSW-106-09-T-S-RA;IO_A_1, IO_A_3, IO_A_2, IO_A_4, IO_B_1, IO_B_3, IO_B_2, IO_B_4;Samtec_TSW-106-09-T-S-RA_Shortened_SMD;;
-;;;;;;;;;;
-Front Panel Components;2;H1, H2;-;-;M2.5x6, ISO7380, BHCS;-;SCREW_SW_TOP, SCREW_SW_BOT;Screw_ISO7380_M2-5x6;;
-;2;;-;-;M2.5, DIN934, Hex Nut;-;;;;
-;8;H7, H8, H9, H10, H11, H12, H13, H14;-;-;M6 (0.5 Thread), Knurled Nut;-;NUT_IO1, NUT_IO3, NUT_IO5, NUT_OUT1, NUT_IO2, NUT_IO4, NUT_IO6, NUT_OUT2;Nut_M6x2mm_Knurled;;
-;4;H15, H16, H17, H18;-;-;M7x2 (0.75 Thread), Hex Nut;-;NUT_POT_A, NUT_POT_B, NUT_POT_C, NUT_POT_D;Nut_M7x2mm_Black;;
-;4;H19, H20, H21, H22;-;-;3D Printed Part;-;WASHER_POT_A, WASHER_POT_B, WASHER_POT_C, WASHER_POT_D;Washer_RV16AF_2mm_Tab;;
-;4;H25, H26, H27, H28;-;-;-;3/03/TPN130-006/237/224;KNOB_POT_A, KNOB_POT_B, KNOB_POT_C, KNOB_POT_D;Sifam_3-03-TPN130-006;;
-;8;J2, J3, J4, J5, J6, J7, J8, J9;-;-;WQP-WQP518MA also works;WQP-WQP518MA-BM;IO1, IO2, IO3, IO4, IO5, IO6, OUT1, OUT2;QingPu_WQP-WQP518MA-BM_SMD;;
-;1;;-;-;3D Printed Part;-;;;;
-;1;SW1;-;-;-;GF-161-3011;SWITCH;CW_GF-161-3011_SMD;;
-;4;RV1, RV2, RV3, RV4;-;-;RV16AF-10-17K;RV16AF-10-17K-B100K-3;POTA, POTB, POTC, POTD;Alpha_RV16AF-10-17K_SMD_Slot;;
-;4;;-;-;16mm Potentiometer Dust Cover;-;;;;
-;50cm;;-;-;Copper Wire (Tinned), 0.80mm;1515008/22;;;;
-;;;;;;;;;;
-Breadboards;2;H23, H24;-;-;830 Point, BB830/MB-102;BB830;BREADBOARD_TOP, BREADBOARD_BOT;Breadboard_MB-102;;
-;5;H29, H30, H31, H32, H33;-;-;-;SJ-5023-BLACK;FOOT_TL, FOOT_BL, FOOT_TR, FOOT_BR, FOOT_MID;3M_SJ-5023;;
-;;;;;;;;;;
-Extra Full Kit Parts;8;C1, C2, C3, C4, C10, C11 + 2;100nF;0805;>=25V, X5R/X7R;CL21B104KACNNNC;100nF;C_0805_2012Metric_Pad1.18x1.45mm_HandSolder;turquoise #C8E6E6;
-;6;D1, D2, D3 +3;-;1206;red, ~230mcd @ 20mA;APT3216SURCK;APT3216;LED_1206_3216Metric_ReverseMount_HandSolder;;
-;6;D4, D5, D6 +3;-;SOD-123;-;1N5819HW-7-F;1N5819;D_SOD-123;;
-;7;R1, R7, R8 +4;1k;0805;>=1/4W, 1%;RC0805FR-7W1KL;1k;R_0805_2012Metric_Pad1.20x1.40mm_HandSolder;gray #788895;1001
-;7;R9 + 6;10k;0805;>=1/8W, 1%;RC0805FR-0710KL;RS;R_0805_2012Metric_Pad1.20x1.40mm_HandSolder;black #131723;1002
-;6;+6;47k;0805;>=1/8W, 1%;RC0805FR-0747KL;;;yellow #FED16A;4702
-;6;+6;100k;0805;>=1/8W, 1%;RC0805FR-07100KL;;;dark blue #0754A4;1003
-;2;+2;-;SOT-23;-;BC848BLT3G;;;;1K
+;Quantity;Reference;Value;Package;Description;Substitution Criteria;Manufacturer Part Number;KiCad Value;Footprint;Color Marking;Code on Part
+PCBs;1;-;-;-;Spark Inducer Main PCB;;-;;;;
+;8;-;-;-;Spark Inducer Helper Jack PCB;;-;;;;
+;1;-;-;-;Spark Inducer Helper Switch PCB;;-;;;;
+;;;;;;;;;;;
+SMD Components;6;C1, C2, C3, C4, C10, C11;100nF;0805;Capacitor, 25V, X7R;>=25V, X5R/X7R;CL21B104KACNNNC;100nF;C_0805_2012Metric_Pad1.18x1.45mm_HandSolder;turquoise #C8E6E6;
+;3;C5, C6, C7;10uF;1206;Capacitor, 25V, X5R;>=25V, X5R/X7R;CL31A106KAHNFNE;10uF;C_1206_3216Metric_Pad1.33x1.80mm_HandSolder;;
+;1;C9;330nF;0805;Capacitor, 50V, X7R;>=25V, X5R/X7R;CL21B334KBFNNNE;330nF;C_0805_2012Metric_Pad1.18x1.45mm_HandSolder;;
+;3;D1, D2, D3;-;1206;LED, red, ~230mcd @ 20mA;red, ~230mcd @ 20mA;APT3216SURCK;APT3216;LED_1206_3216Metric_ReverseMount_HandSolder;;
+;3;D4, D5, D6;-;SOD-123;1N5819 Schottky Diode, 40V;-;1N5819HW-7-F;1N5819;D_SOD-123;;SL
+;1;F1;-;1206;PTC Resettable Fuse, 200mA;-;0ZCJ0020FF2E;200mA;Fuse_1206_3216Metric_Pad1.42x1.75mm_HandSolder;;bF
+;2;F2, F3;-;1206;PTC Resettable Fuse, 100mA;-;SMD1206B010TF;100mA;Fuse_1206_3216Metric_Pad1.42x1.75mm_HandSolder;;0
+;1;J1;-;-;Eurorack Power Connector;-;SBH11-NBPC-D08-SM-BK;Eurorack_Power_Header;Eurorack_Power_Header_2x08_SMD_HandSolder;;
+;1;J18;-;-;2x4 Header;-;54202-S08-04;REF_SELECT;PinHeader_2x04_P2.54mm_Vertical_SMD;;
+;1;J18;-;-;Jumper;-;SPC02SYAN;REF_SELECT;;;
+;3;R1, R7, R8;1k;0805;Resistor, 1/4W, 1%;>=1/4W, 1%;RC0805FR-7W1KL;1k;R_0805_2012Metric_Pad1.20x1.40mm_HandSolder;gray #788895;1001
+;2;R2, R3;3.3k;0805;Resistor, 1/8W, 1%;>=1/8W, 1%;RC0805FR-073K3L;3.3k;R_0805_2012Metric_Pad1.20x1.40mm_HandSolder;red #E32B45;3301
+;1;R9;10k;0805;Resistor, 1/8W, 1%;>=1/8W, 1%;RC0805FR-0710KL;RS;R_0805_2012Metric_Pad1.20x1.40mm_HandSolder;black #131723;1002
+;2;R10, R11;33k;0805;Resistor, 1/8W, 0.1%;>=1/8W, 0.1%;RT0805BRD0733KL;33k 0.1%;R_0805_2012Metric_Pad1.20x1.40mm_HandSolder;light blue #5BC6F2;3302
+;2;U1, U2;-;SOIC-8;TL072H Opamp;-;TL072HIDR;TL072H;SOIC-8_3.9x4.9mm_P1.27mm;;TL072D
+;1;U4;-;SOT-89;L78L05 Linear Regulator, 5.0V;L78Lxx;L78L05ABUTR;L78Lxx;SOT-89-3_ThermalReliefs;;8C
+;1;U5;-;SOT-23;LM4040 Voltage Reference, 2.5V;LM4040;LM4040CYM3-2.5-TR;LM4040;SOT-23;white #F1F0EA;Y2C
+;;;;;;;;;;;
+Optional TL431B Reference;1;C8;10uF;1206;Capacitor, 25V, X5R;>=25V, X5R/X7R;CL31A106KAHNFNE;10uF;C_1206_3216Metric_Pad1.33x1.80mm_HandSolder;;
+;1;R5;R1;0805;;>=1/8W, <=1%;-;R1;R_0805_2012Metric_Pad1.20x1.40mm_HandSolder;;
+;1;R6;R2;0805;;>=1/8W, <=1%;-;R2;R_0805_2012Metric_Pad1.20x1.40mm_HandSolder;;
+;1;R4;RS;0805;;>=1/8W, 1%;-;RS;R_0805_2012Metric_Pad1.20x1.40mm_HandSolder;;
+;1;U3;-;SOIC-8;TL431B Voltage Reference;TL431B;TL431BID;TL431B;SOIC-8_3.9x4.9mm_P1.27mm;;TODO
+;;;;;;;;;;;
+Optional REF50xx Reference;2;C12, C13;1uF;0805;Capacitor, 25V, X7R;>=25V, X5R/X7R;CL21B105KAFNNNG;1uF;C_0805_2012Metric_Pad1.18x1.45mm_HandSolder;;
+;1;U6;-;SOIC-8;;REF50xx;-;REF50xx;SOIC-8_3.9x4.9mm_P1.27mm;;TODO
+;;;;;;;;;;;
+Headers;8;J19, J20, J21, J22, J23, J24, J25, J26;-;-;2x4 Header;-;54202-S08-04;POWER_A_1, POWER_A_2, POWER_A_3, POWER_A_4, POWER_B_1, POWER_B_2, POWER_B_3, POWER_B_4;PinHeader_2x04_P2.54mm_Vertical_SMD;;
+;8;J10, J11, J12, J13, J14, J15, J16, J17;-;-;1x6 Header, Right Angle;-;TSW-106-09-T-S-RA;IO_A_1, IO_A_3, IO_A_2, IO_A_4, IO_B_1, IO_B_3, IO_B_2, IO_B_4;Samtec_TSW-106-09-T-S-RA_Shortened_SMD;;
+;;;;;;;;;;;
+Front Panel Components;2;H1, H2;-;-;M2.5x6 Screw, ISO7380;M2.5x6, ISO7380;-;SCREW_SW_TOP, SCREW_SW_BOT;Screw_ISO7380_M2-5x6;;
+;2;;-;-;M2.5 Hex Nut, DIN934;M2.5, DIN934, Hex Nut;-;;;;
+;8;H7, H8, H9, H10, H11, H12, H13, H14;-;-;Audio Jack Knurled Nut;M6 (0.5 Thread), Knurled Nut;-;NUT_IO1, NUT_IO3, NUT_IO5, NUT_OUT1, NUT_IO2, NUT_IO4, NUT_IO6, NUT_OUT2;Nut_M6x2mm_Knurled;;
+;4;H15, H16, H17, H18;-;-;Potentiometer Hex Nut;M7x2 (0.75 Thread), Hex Nut;-;NUT_POT_A, NUT_POT_B, NUT_POT_C, NUT_POT_D;Nut_M7x2mm_Black;;
+;4;H19, H20, H21, H22;-;-;3D Printed Potentiometer Spacer;3D Printed Part;-;WASHER_POT_A, WASHER_POT_B, WASHER_POT_C, WASHER_POT_D;Washer_RV16AF_2mm_Tab;;
+;4;H25, H26, H27, H28;-;-;Potentiometer Knob;-;3/03/TPN130-006/237/224;KNOB_POT_A, KNOB_POT_B, KNOB_POT_C, KNOB_POT_D;Sifam_3-03-TPN130-006;;
+;8;J2, J3, J4, J5, J6, J7, J8, J9;-;-;Audio Jack;WQP-WQP518MA also works;WQP-WQP518MA-BM;IO1, IO2, IO3, IO4, IO5, IO6, OUT1, OUT2;QingPu_WQP-WQP518MA-BM_SMD;;
+;1;;-;-;3D Printed Switch Bracket;3D Printed Part;-;;;;
+;1;SW1;-;-;Power Switch;-;GF-161-3011;SWITCH;CW_GF-161-3011_SMD;;
+;4;RV1, RV2, RV3, RV4;-;-;Potentiometer, 16mm;RV16AF-10-17K;RV16AF-10-17K-B100K-3;POTA, POTB, POTC, POTD;Alpha_RV16AF-10-17K_SMD_Slot;;
+;4;;-;-;Potentiometer Dust Cover, 16mm;16mm Potentiometer Dust Cover;-;;;;
+;50cm;;-;-;Tinned Copper Wire, 0.8mm;Copper Wire (Tinned), 0.80mm;1515008/22;;;;
+;;;;;;;;;;;
+Breadboards;2;H23, H24;-;-;BB830 Breadboard;830 Point, BB830/MB-102;BB830;BREADBOARD_TOP, BREADBOARD_BOT;Breadboard_MB-102;;
+;5;H29, H30, H31, H32, H33;-;-;Rubber Foot;-;SJ-5023-BLACK;FOOT_TL, FOOT_BL, FOOT_TR, FOOT_BR, FOOT_MID;3M_SJ-5023;;
+;;;;;;;;;;;
+Extra Full Kit Parts;8;C1, C2, C3, C4, C10, C11 + 2;100nF;0805;Capacitor, 25V, X7R;>=25V, X5R/X7R;CL21B104KACNNNC;100nF;C_0805_2012Metric_Pad1.18x1.45mm_HandSolder;turquoise #C8E6E6;
+;6;D1, D2, D3 +3;-;1206;LED, red, ~230mcd @ 20mA;red, ~230mcd @ 20mA;APT3216SURCK;APT3216;LED_1206_3216Metric_ReverseMount_HandSolder;;
+;6;D4, D5, D6 +3;-;SOD-123;1N5819 Schottky Diode, 40V;-;1N5819HW-7-F;1N5819;D_SOD-123;;
+;7;R1, R7, R8 +4;1k;0805;Resistor, 1/4W, 1%;>=1/4W, 1%;RC0805FR-7W1KL;1k;R_0805_2012Metric_Pad1.20x1.40mm_HandSolder;gray #788895;1001
+;7;R9 + 6;10k;0805;Resistor, 1/8W, 1%;>=1/8W, 1%;RC0805FR-0710KL;RS;R_0805_2012Metric_Pad1.20x1.40mm_HandSolder;black #131723;1002
+;6;+6;47k;0805;Resistor, 1/8W, 1%;>=1/8W, 1%;RC0805FR-0747KL;;;yellow #FED16A;4702
+;6;+6;100k;0805;Resistor, 1/8W, 1%;>=1/8W, 1%;RC0805FR-07100KL;;;dark blue #0754A4;1003
+;2;+2;-;SOT-23;BC848 NPN Transistor;-;BC848BLT3G;;;;1K
